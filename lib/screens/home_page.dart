@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           showRatingPopup(context, setState, null);
         },
-        child: const Icon(Icons.add_reaction),
+        child: const Icon(Icons.add_reaction, color: Colors.white),
       ),
     );
   }

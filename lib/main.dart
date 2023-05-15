@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
   // change the color scheme for the ratings
   // let the user edit posts
   // make the data format more user friendly
-  // support dark mode
   
   // DONE : fix keyboard bug
   // DONE : make the sign in page look better
@@ -31,13 +30,28 @@ class MyApp extends StatelessWidget {
   // DONE : figure out how to manage the cache
   // DONE : fix minor issues with the google sign in
   // DONE : move the tab bar to the bottom of the screen
+  // DONE : add dark mode support
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
         title: 'Mood Log',
-        home: TabView(),
+        theme: ThemeData(
+          brightness: Brightness.light,
+          colorScheme: const ColorScheme.light(
+            primary: Colors.blue,
+            secondary: Colors.blue,
+          ),
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          colorScheme: const ColorScheme.dark(
+            primary: Colors.blue,
+            secondary: Colors.blue,
+          ),
+        ),
+        home: const TabView(),
       );
   }
 }

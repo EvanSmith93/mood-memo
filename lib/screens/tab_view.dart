@@ -21,7 +21,8 @@ class _TabViewState extends State<TabView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mood Log'),
+        title: Text('Mood Log', style: TextStyle(color: Theme.of(context).textTheme.titleMedium!.color)),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -33,8 +34,8 @@ class _TabViewState extends State<TabView> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_reaction),
-            label: 'Rate Day',
+            icon: Icon(Icons.calendar_month),
+            label: 'Calendar',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

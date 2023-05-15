@@ -18,29 +18,23 @@ class _CalendarBoxState extends State<CalendarBox> {
     return FutureBuilder(
         future: widget.controller.getRating(widget.details.date),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (true) {
             return Container(
               decoration: BoxDecoration(
-                  color: snapshot.data!.color,
-                  border: Border.all(color: Colors.white, width: 0.5)),
+                  color: snapshot.hasData 
+                  ? snapshot.data!.color
+                  : !widget.details.date.isAfter(DateTime.now())
+                    ? Theme.of(context).brightness == Brightness.light
+                      ? Colors.grey[400] 
+                      : Colors.grey[600]
+                    : Theme.of(context).brightness == Brightness.light 
+                      ? Colors.grey[300] 
+                      : Colors.grey[700],
+                  border: Border.all(color: Theme.of(context).scaffoldBackgroundColor, width: 1)),
               child: Center(
                 child: Text(
                   widget.details.date.day.toString(),
-                  style: const TextStyle(color: Colors.black),
-                ),
-              ),
-            );
-          } else {
-            return Container(
-              decoration: BoxDecoration(
-                  color: !widget.details.date.isAfter(DateTime.now())
-                      ? Colors.grey[400]
-                      : Colors.grey[300],
-                  border: Border.all(color: Colors.white, width: 0.5)),
-              child: Center(
-                child: Text(
-                  widget.details.date.day.toString(),
-                  style: const TextStyle(color: Colors.black),
+                  style: TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
                 ),
               ),
             );
