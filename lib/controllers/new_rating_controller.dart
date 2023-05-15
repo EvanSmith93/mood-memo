@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mood_log/models/rating.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mood_log/services/db.dart';
 
 class RateDayController {

@@ -44,6 +44,7 @@ dependencies:
   syncfusion_flutter_calendar: ^20.4.51
   flutter_signin_button: ^2.0.0
   modal_bottom_sheet: 3.0.0-pre
+  shared_preferences: ^2.1.1
 
 dev_dependencies:
   flutter_test:

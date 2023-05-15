@@ -1,4 +1,3 @@
-import 'package:mood_log/models/rating.dart';
 import 'package:mood_log/services/db.dart';
 
 class DetailPageController {
