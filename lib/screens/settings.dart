@@ -21,8 +21,8 @@ class _SettingsState extends State<Settings> {
     return ListView(
       children: [
         // add the user's name as a heading
-        ListTile(
-          title: FutureBuilder(
+        const ListTile(
+          title: Text('Ben Dover'),/*FutureBuilder(
             future: controller.getUserName(),
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
@@ -31,15 +31,15 @@ class _SettingsState extends State<Settings> {
                 return const Text("Loading...");
               }
             },
-          ),
-          subtitle: const Text('User Email'),
+          ),*/
+          subtitle: Text('User Email'),
         ),
         ListTile(
           title: const Text('Sign Out'),
           trailing: const Icon(Icons.logout),
           onTap: () {
             print("Signing out");
-            AuthService().signOut(context);
+            /*AuthService().signOut(context);*/
           },
         ),
       ],

@@ -32,7 +32,7 @@ class _SignInState extends State<SignIn> {
             child: SignInButton(
               Buttons.Google,
               onPressed: () {
-                AuthService().signInWithGoogle(context);
+                /*AuthService().signInWithGoogle(context);*/
               },
             ),
           ),

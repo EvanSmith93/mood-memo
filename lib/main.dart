@@ -46,8 +46,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return const MaterialApp(
+        title: 'Mood Log',
+        // if the user is signed in, show the home page
+        home: TabView(),
+      );
     // check if the user is signed in
-    if (FirebaseAuth.instance.currentUser != null) {
+    /*if (FirebaseAuth.instance.currentUser != null) {
       //print(FirebaseAuth.instance.currentUser);
       return const MaterialApp(
         title: 'Mood Log',
@@ -60,6 +65,6 @@ class MyApp extends StatelessWidget {
         // if the user isn't signed in, show the sign in page
         home: SignIn(),
       );
-    }
+    }*/
   }
 }

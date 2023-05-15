@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+/*import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mood_log/screens/home_page.dart';
@@ -63,3 +63,4 @@ class AuthService {
     }
   }
 }
+*/
