@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mood_log/screens/settings.dart';
 import 'package:mood_log/widgets/calendar.dart';
 
 import '../widgets/new_rating_popup.dart';

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_log/controllers/new_rating_controller.dart';
 import 'package:mood_log/widgets/color_box.dart';
 import 'package:mood_log/models/rating.dart';
-import 'package:mood_log/old_files/color_button.dart';
 
 class NewRating extends StatefulWidget {
   final Function refresher;
@@ -17,6 +16,7 @@ class NewRating extends StatefulWidget {
 class _NewRatingState extends State<NewRating> {
   RateDayController controller = RateDayController();
 
+  @override
   void initState() {
     super.initState();
     if (widget.date != null) {

@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
   // MAYBE NOT NEEDED : hide the date selector until the user clicks on the date
   // MAYBE NOT NEEDED : move the tab bar to the bottom of the screen
   // change the color scheme for the ratings
-  // fix minor issues with the google sign in
   // let the user edit posts
+  // make the data format more user friendly
+  // support dark mode
   
   // DONE : fix keyboard bug
   // DONE : make the sign in page look better
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
   // DONE : figure out if I want to use the date as the id for ratings in the database
   // DONE : have the color buttons be selectable, and then have a submit button (so you can include a note)
   // DONE : make the greyed out days clickable
-  // SORT OF DONE : figure out how to manage the cache
+  // DONE : figure out how to manage the cache
+  // DONE : fix minor issues with the google sign in
 
   // This widget is the root of your application.
   @override

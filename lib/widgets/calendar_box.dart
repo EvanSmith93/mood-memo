@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_log/controllers/calendar_controller.dart';
-import 'package:mood_log/screens/detail_page.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CalendarBox extends StatefulWidget {
