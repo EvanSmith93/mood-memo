@@ -2,7 +2,6 @@ import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_log/models/rating.dart';
 import 'package:mood_log/screens/detail_page.dart';
 import 'package:mood_log/services/db.dart';
-import 'package:mood_log/widgets/new_rating.dart';
 
 import '../widgets/new_rating_popup.dart';
 

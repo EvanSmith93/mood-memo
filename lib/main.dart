@@ -1,21 +1,8 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/screens/home_page.dart';
 import 'package:mood_log/screens/tab_view.dart';
-import 'package:mood_log/services/auth.dart';
-import 'package:mood_log/widgets/color_box.dart';
-import 'package:mood_log/widgets/new_rating.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'screens/sign_in.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  //String uid = AuthService().getUserUid();
-  //String name = AuthService().getUserName();
-  //LocalStorageService().createUser(uid, name);
 
   runApp(const MyApp());
 }
@@ -48,23 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
         title: 'Mood Log',
-        // if the user is signed in, show the home page
         home: TabView(),
       );
-    // check if the user is signed in
-    /*if (FirebaseAuth.instance.currentUser != null) {
-      //print(FirebaseAuth.instance.currentUser);
-      return const MaterialApp(
-        title: 'Mood Log',
-        // if the user is signed in, show the home page
-        home: TabView(),
-      );
-    } else {
-      return const MaterialApp(
-        title: 'Mood Log',
-        // if the user isn't signed in, show the sign in page
-        home: SignIn(),
-      );
-    }*/
   }
 }

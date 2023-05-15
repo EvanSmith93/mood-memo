@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mood_log/screens/home_page.dart';
 import 'package:mood_log/screens/settings.dart';
 

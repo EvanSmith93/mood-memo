@@ -19,29 +19,6 @@ class Rating {
 
   Rating({required this.timestamp, required this.value, required this.note});
 
-  /*Rating.fromInt(int value, DateTime timestamp) {
-    switch (value) {
-      case -1:
-        this.value = RatingValue.none;
-        break;
-      case 1:
-        this.value = RatingValue.one;
-        break;
-      case 2:
-        this.value = RatingValue.two;
-        break;
-      case 3:
-        this.value = RatingValue.three;
-        break;
-      case 4:
-        this.value = RatingValue.four;
-        break;
-      case 5:
-        this.value = RatingValue.five;
-        break;
-    }
-  }*/
-
   String getDate() {
     return DatabaseService().formatDate(timestamp);
   }
