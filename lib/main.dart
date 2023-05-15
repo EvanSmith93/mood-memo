@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
 
   // General App Todos:
   // MAYBE NOT NEEDED : hide the date selector until the user clicks on the date
-  // MAYBE NOT NEEDED : move the tab bar to the bottom of the screen
   // change the color scheme for the ratings
   // let the user edit posts
   // make the data format more user friendly
@@ -31,6 +30,7 @@ class MyApp extends StatelessWidget {
   // DONE : make the greyed out days clickable
   // DONE : figure out how to manage the cache
   // DONE : fix minor issues with the google sign in
+  // DONE : move the tab bar to the bottom of the screen
 
   // This widget is the root of your application.
   @override
