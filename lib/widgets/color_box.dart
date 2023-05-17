@@ -21,6 +21,11 @@ class ColorBox extends StatelessWidget {
           color: rating.color,
           borderRadius: const BorderRadius.all(Radius.circular(14)),
         ),
+        child: Center(
+          // large icon in the center of the container
+          child: Icon(rating.icon, size: 35),
+
+        ),
       ),
     );
   }

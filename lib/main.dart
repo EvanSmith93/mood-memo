@@ -12,9 +12,15 @@ class MyApp extends StatelessWidget {
 
   // General App Todos:
   // MAYBE NOT NEEDED : hide the date selector until the user clicks on the date
-  // change the color scheme for the ratings
-  // let the user edit posts
-  // make the data format more user friendly
+  // MAYBE NOT NEEDED : import and export data
+  
+  // TO DO : change the color scheme for the ratings
+  // TO DO : let the user edit posts
+  // TO DO : contact support button
+  // TO DO : alert for deleting a rating
+  // TO DO : alert for deleting an unfinished rating
+
+  // IN PROGRESS : add emojis to the ratings
   
   // DONE : fix keyboard bug
   // DONE : make the sign in page look better
@@ -31,6 +37,7 @@ class MyApp extends StatelessWidget {
   // DONE : fix minor issues with the google sign in
   // DONE : move the tab bar to the bottom of the screen
   // DONE : add dark mode support
+  // DONE : make the data format more user friendly
 
   // This widget is the root of your application.
   @override

@@ -50,22 +50,25 @@ class _NewRatingState extends State<NewRating> {
             ),
             ToggleButtons(
               isSelected: controller.selected,
+              selectedColor: Colors.white,
+              fillColor: Colors.grey,
+              borderRadius: const BorderRadius.all(Radius.circular(14)),
               children: [
                 ColorBox(
                     rating: Rating(
-                        value: RatingValue.one, timestamp: DateTime.now(), note: "")),
+                        value: RatingValue.one, date: DateTime.now(), note: "")),
                 ColorBox(
                     rating: Rating(
-                        value: RatingValue.two, timestamp: DateTime.now(), note: "")),
+                        value: RatingValue.two, date: DateTime.now(), note: "")),
                 ColorBox(
                     rating: Rating(
-                        value: RatingValue.three, timestamp: DateTime.now(), note: "")),
+                        value: RatingValue.three, date: DateTime.now(), note: "")),
                 ColorBox(
                     rating: Rating(
-                        value: RatingValue.four, timestamp: DateTime.now(), note: "")),
+                        value: RatingValue.four, date: DateTime.now(), note: "")),
                 ColorBox(
                     rating: Rating(
-                        value: RatingValue.five, timestamp: DateTime.now(), note: "")),
+                        value: RatingValue.five, date: DateTime.now(), note: "")),
               ],
               onPressed: (int index) {
                 setState(() {

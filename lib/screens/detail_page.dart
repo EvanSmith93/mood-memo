@@ -19,7 +19,7 @@ class _DetailPageState extends State<DetailPage> {
     // a detail page that displays the date and rating value / color and then the note
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.rating.getDate()),
+        title: Text(widget.rating.getPrettyDate()),
         backgroundColor: widget.rating.color,
       ),
       body: Padding(

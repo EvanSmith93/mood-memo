@@ -28,7 +28,7 @@ class RateDayController {
 
   Future<void> setRating() async {
     Rating rating =
-        Rating(timestamp: selectedDate, value: RatingValue.values[getValue()], note: note);
+        Rating(date: selectedDate, value: RatingValue.values[getValue()], note: note);
     
     await db.setRating(rating);
   }

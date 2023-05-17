@@ -3,7 +3,7 @@ import 'package:mood_log/screens/home_page.dart';
 import 'package:mood_log/screens/settings.dart';
 
 class TabView extends StatefulWidget {
-  const TabView({Key? key});
+  const TabView({super.key});
 
   @override
   State<TabView> createState() => _TabViewState();

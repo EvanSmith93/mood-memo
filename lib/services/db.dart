@@ -1,7 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-
-import '../models/rating.dart';
+import 'package:mood_log/models/rating.dart';
 
 class DatabaseService {
   SharedPreferences? _prefs;
@@ -16,9 +15,15 @@ class DatabaseService {
     return formattedDate;
   }
 
+  String prettyFormatDate(DateTime date) {
+    final DateFormat formatter = DateFormat('EEEE, MMMM d, yyyy');
+    String formattedDate = formatter.format(date);
+    return formattedDate;
+  }
+
   Future<void> setRating(Rating rating) async {
     await _initPrefs();
-    final docKey = formatDate(rating.timestamp);
+    final docKey = formatDate(rating.date);
     _prefs!.setInt('rating_$docKey', rating.number);
     _prefs!.setString('note_$docKey', rating.note);
   }
@@ -30,9 +35,9 @@ class DatabaseService {
     final note = _prefs!.getString('note_$docKey');
     if (value != null) {
       return Rating(
-        timestamp: day,
+        date: day,
         value: RatingValue.values[value],
-        note: note ?? 'There is no note for this day',
+        note: note ?? '',
       );
     }
     return null;

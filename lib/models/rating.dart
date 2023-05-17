@@ -11,26 +11,30 @@ enum RatingValue {
 }
 
 class Rating {
-  late DateTime timestamp;
+  late DateTime date;
   late RatingValue value;
   late String note;
 
-  Rating({required this.timestamp, required this.value, required this.note});
+  Rating({required this.date, required this.value, required this.note});
 
   String getDate() {
-    return DatabaseService().formatDate(timestamp);
+    return DatabaseService().formatDate(date);
+  }
+
+  String getPrettyDate() {
+    return DatabaseService().prettyFormatDate(date);
   }
 
   // should include the note
   Rating.fromJson(Map<String, dynamic> json)
       : value = RatingValue.values[json['value']],
-        timestamp = DateTime.parse(json['timestamp']);
+        date = DateTime.parse(json['date']);
 
   // should also include the note
   Map<String, dynamic> toJson() {
     return {
       'value': value.index,
-      'timestamp': timestamp.toString(),
+      'date': date.toString(),
     };
   }
 
@@ -45,9 +49,26 @@ class Rating {
       case RatingValue.three:
         return Colors.blue;
       case RatingValue.four:
-        return Colors.yellow;
+        return Colors.purple;
       case RatingValue.five:
         return Colors.green;
+    }
+  }
+
+  IconData get icon {
+    switch (value) {
+      case RatingValue.none:
+        return Icons.sentiment_neutral;
+      case RatingValue.one:
+        return Icons.sentiment_very_dissatisfied;
+      case RatingValue.two:
+        return Icons.sentiment_dissatisfied;
+      case RatingValue.three:
+        return Icons.sentiment_satisfied;
+      case RatingValue.four:
+        return Icons.sentiment_satisfied_alt;
+      case RatingValue.five:
+        return Icons.sentiment_very_satisfied;
     }
   }
 

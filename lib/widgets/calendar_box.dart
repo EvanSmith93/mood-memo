@@ -30,7 +30,7 @@ class _CalendarBoxState extends State<CalendarBox> {
                     : Theme.of(context).brightness == Brightness.light 
                       ? Colors.grey[300] 
                       : Colors.grey[700],
-                  border: Border.all(color: Theme.of(context).scaffoldBackgroundColor, width: 1)),
+                  border: Border.all(color: Theme.of(context).scaffoldBackgroundColor, width: 0.5)),
               child: Center(
                 child: Text(
                   widget.details.date.day.toString(),
