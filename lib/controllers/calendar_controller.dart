@@ -32,7 +32,7 @@ class ColorGridController {
                 rating: days[date.toString()]!, refresher: refresher)),
       );
     } else if (!date!.isAfter(DateTime.now())) {
-      showRatingPopup(context, refresher, date);
+      showRatingPopup(context, refresher, date, null, null);
     }
   }
 }

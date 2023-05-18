@@ -6,7 +6,6 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 class Calendar extends StatefulWidget {
   Calendar({super.key});
 
-  // color grid controller
   final ColorGridController controller = ColorGridController();
 
   @override

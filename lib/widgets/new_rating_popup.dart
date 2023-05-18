@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mood_log/models/rating.dart';
 import 'package:mood_log/widgets/new_rating.dart';
 
-void showRatingPopup(BuildContext context, Function refresher, DateTime? date) {
+void showRatingPopup(BuildContext context, Function refresher, DateTime date,
+    RatingValue? rating, String? note) {
   showModalBottomSheet(
     shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
@@ -12,8 +14,11 @@ void showRatingPopup(BuildContext context, Function refresher, DateTime? date) {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: SingleChildScrollView(
           child: NewRating(
-              refresher: refresher,
-              date: date)),
+        refresher: refresher,
+        date: date,
+        rating: rating,
+        note: note,
+      )),
     ),
   );
 }

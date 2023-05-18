@@ -20,7 +20,20 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.rating.getPrettyDate()),
-        backgroundColor: widget.rating.color,
+        backgroundColor: widget.rating.value.color,
+        // add an edit button
+        actions: [
+          IconButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              widget.controller.editRating(context, widget.refresher, widget.rating);
+              
+              //Rating? updatedRating = await widget.controller.getUpdatedRating(newDate);
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(rating: , refresher: widget.refresher)));
+            }, 
+            icon: const Icon(Icons.edit)
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -32,7 +45,7 @@ class _DetailPageState extends State<DetailPage> {
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600)
             ),
             Text(
-              "${widget.rating.number} out of 5", 
+              "${widget.rating.value.number} out of 5", 
               style: const TextStyle(fontSize: 24)
             ),
             const SizedBox(height: 20),

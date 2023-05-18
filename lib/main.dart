@@ -10,18 +10,19 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // General App Todos:
-  // MAYBE NOT NEEDED : hide the date selector until the user clicks on the date
-  // MAYBE NOT NEEDED : import and export data
+  // App Todos:
   
+  // MAYBE NOT NEEDED : import and export data
+  // MAYBE NOT NEEDED : donate button
+  
+  // TO DO : make the detail screen look better
   // TO DO : change the color scheme for the ratings
-  // TO DO : let the user edit posts
   // TO DO : contact support button
   // TO DO : alert for deleting a rating
   // TO DO : alert for deleting an unfinished rating
+  // TO DO : alert for adding a rating on top of another rating
 
-  // IN PROGRESS : add emojis to the ratings
-  
+  // DONE : let the user edit posts
   // DONE : fix keyboard bug
   // DONE : make the sign in page look better
   // DONE : add a rating detail page
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
   // DONE : move the tab bar to the bottom of the screen
   // DONE : add dark mode support
   // DONE : make the data format more user friendly
+  // DONE : add emojis to the ratings
 
   // This widget is the root of your application.
   @override

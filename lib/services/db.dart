@@ -24,7 +24,7 @@ class DatabaseService {
   Future<void> setRating(Rating rating) async {
     await _initPrefs();
     final docKey = formatDate(rating.date);
-    _prefs!.setInt('rating_$docKey', rating.number);
+    _prefs!.setInt('rating_$docKey', rating.value.number);
     _prefs!.setString('note_$docKey', rating.note);
   }
 

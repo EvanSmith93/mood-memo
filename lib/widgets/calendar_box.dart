@@ -22,7 +22,7 @@ class _CalendarBoxState extends State<CalendarBox> {
             return Container(
               decoration: BoxDecoration(
                   color: snapshot.hasData 
-                  ? snapshot.data!.color
+                  ? snapshot.data!.value.color
                   : !widget.details.date.isAfter(DateTime.now())
                     ? Theme.of(context).brightness == Brightness.light
                       ? Colors.grey[400] 
@@ -34,7 +34,6 @@ class _CalendarBoxState extends State<CalendarBox> {
               child: Center(
                 child: Text(
                   widget.details.date.day.toString(),
-                  style: TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
                 ),
               ),
             );
