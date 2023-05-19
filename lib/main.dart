@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_log/screens/tab_view.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -11,16 +13,16 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // App Todos:
-  
+
   // MAYBE NOT NEEDED : import and export data
   // MAYBE NOT NEEDED : donate button
+  // MAYBE NOT NEEDED : change color scheme option
+  // MAYBE NOT NEEDED : change theme option
   
   // TO DO : make the detail screen look better
   // TO DO : change the color scheme for the ratings
   // TO DO : contact support button
-  // TO DO : alert for deleting a rating
-  // TO DO : alert for deleting an unfinished rating
-  // TO DO : alert for adding a rating on top of another rating
+  // TO DO : clean up code (especially the new rating code)
 
   // DONE : let the user edit posts
   // DONE : fix keyboard bug
@@ -40,12 +42,17 @@ class MyApp extends StatelessWidget {
   // DONE : add dark mode support
   // DONE : make the data format more user friendly
   // DONE : add emojis to the ratings
+  // DONE : alert for deleting a rating
+  // DONE : alert for deleting an unfinished rating
+  // DONE : alert for adding a rating on top of another rating
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Mood Log',
+        themeMode: ThemeMode.system,
+        navigatorKey: navigatorKey,
         theme: ThemeData(
           brightness: Brightness.light,
           colorScheme: const ColorScheme.light(

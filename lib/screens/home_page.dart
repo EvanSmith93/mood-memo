@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
       // button that pulls up the rate day screen from the bottom
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showRatingPopup(context, setState, DateTime.now(), null, null);
+          showRatingPopup(setState, null, null, null);
         },
         child: const Icon(Icons.add_reaction, color: Colors.white),
       ),

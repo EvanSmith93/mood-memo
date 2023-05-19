@@ -16,20 +16,15 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-    // a detail page that displays the date and rating value / color and then the note
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.rating.getPrettyDate()),
         backgroundColor: widget.rating.value.color,
-        // add an edit button
         actions: [
           IconButton(
             onPressed: () async {
               Navigator.pop(context);
               widget.controller.editRating(context, widget.refresher, widget.rating);
-              
-              //Rating? updatedRating = await widget.controller.getUpdatedRating(newDate);
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(rating: , refresher: widget.refresher)));
             }, 
             icon: const Icon(Icons.edit)
           )
@@ -57,14 +52,35 @@ class _DetailPageState extends State<DetailPage> {
               widget.rating.note, 
               style: const TextStyle(fontSize: 24)
             ),
-            // spacer
             const Spacer(),
-            // red delete button with trash can icon
             Center(
               child: ElevatedButton.icon(
                 onPressed: () {
-                  widget.controller.deleteRating(widget.rating.getDate(), widget.refresher);
-                  Navigator.pop(context);
+                  showDialog(
+                    context: context, 
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text("Delete Rating"),
+                        content: const Text("Are you sure you want to delete this rating?"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }, 
+                            child: const Text("Cancel")
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              widget.controller.deleteRating(widget.rating.getDate(), widget.refresher);
+                              Navigator.pop(context);
+                            }, 
+                            child: const Text("Delete")
+                          ),
+                        ],
+                      );
+                    }
+                  );
                 }, 
                 icon: const Icon(Icons.delete), 
                 label: const Text("Delete"),

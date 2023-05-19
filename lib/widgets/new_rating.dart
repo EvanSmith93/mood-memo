@@ -1,19 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_log/controllers/new_rating_controller.dart';
+import 'package:mood_log/main.dart';
 import 'package:mood_log/services/db.dart';
 import 'package:mood_log/widgets/color_box.dart';
 import 'package:mood_log/models/rating.dart';
 
 class NewRating extends StatefulWidget {
+  final NewRatingController controller;
   final Function refresher;
-  final DateTime date;
+  final DateTime? date;
   final RatingValue? rating;
   final String? note;
   const NewRating(
       {Key? key,
+      required this.controller,
       required this.refresher,
-      required this.date,
+      this.date,
       this.rating,
       this.note})
       : super(key: key);
@@ -23,17 +26,6 @@ class NewRating extends StatefulWidget {
 }
 
 class _NewRatingState extends State<NewRating> {
-  NewRatingController controller = NewRatingController();
-
-  @override
-  void initState() {
-    super.initState();
-    controller.setDate(widget.date);
-    if (widget.rating != null)
-      controller.selected[widget.rating!.index - 1] = true;
-    if (widget.note != null) controller.noteController.text = widget.note!;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -61,19 +53,24 @@ class _NewRatingState extends State<NewRating> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: ToggleButtons(
-                isSelected: controller.selected,
+                isSelected: widget.controller.selected,
                 selectedColor: Theme.of(context).textTheme.bodyMedium?.color,
                 borderRadius: const BorderRadius.all(Radius.circular(7)),
                 children: [
-                  ColorBox(value: RatingValue.one, controller: controller),
-                  ColorBox(value: RatingValue.two, controller: controller),
-                  ColorBox(value: RatingValue.three, controller: controller),
-                  ColorBox(value: RatingValue.four, controller: controller),
-                  ColorBox(value: RatingValue.five, controller: controller),
+                  ColorBox(
+                      value: RatingValue.one, controller: widget.controller),
+                  ColorBox(
+                      value: RatingValue.two, controller: widget.controller),
+                  ColorBox(
+                      value: RatingValue.three, controller: widget.controller),
+                  ColorBox(
+                      value: RatingValue.four, controller: widget.controller),
+                  ColorBox(
+                      value: RatingValue.five, controller: widget.controller),
                 ],
                 onPressed: (int index) {
                   setState(() {
-                    controller.setValue(index);
+                    widget.controller.setValue(index);
                   });
                 },
               ),
@@ -82,7 +79,7 @@ class _NewRatingState extends State<NewRating> {
               padding: const EdgeInsets.all(12.0),
               child: TextField(
                 maxLines: 4,
-                controller: controller.noteController,
+                controller: widget.controller.noteController,
                 textInputAction: TextInputAction.done,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -96,10 +93,10 @@ class _NewRatingState extends State<NewRating> {
                 height: 130,
                 child: CupertinoDatePicker(
                   mode: CupertinoDatePickerMode.date,
-                  initialDateTime: controller.selectedDate,
+                  initialDateTime: widget.controller.getDate(),
                   maximumDate: DateTime.now(),
                   onDateTimeChanged: (DateTime newDate) {
-                    controller.setDate(newDate);
+                    widget.controller.setDate(newDate);
                   },
                 ),
               ),
@@ -107,13 +104,39 @@ class _NewRatingState extends State<NewRating> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: ElevatedButton(
-                onPressed: controller.getValue() == 0
+                onPressed: widget.controller.getValue() == 0
                     ? null
-                    : () {
-                        controller.updateRating(
-                            DatabaseService().formatDate(widget.date));
-                        Navigator.pop(context);
-                        widget.refresher(() {});
+                    : () async {
+                        void saveRating() async {
+                          await widget.controller.updateRating(DatabaseService().formatDate(widget.date ?? DateTime.now()));
+                          Navigator.pop(navigatorKey.currentContext!);
+                          widget.refresher(() {});
+                        }
+                        if (widget.date != widget.controller.getDate() && await DatabaseService().getRatingFromDay(
+                                widget.controller.getDate()) != null) {
+                          showDialog(
+                              context: navigatorKey.currentContext!,
+                              builder: (context) => AlertDialog(
+                                    title: const Text('Overwrite rating?'),
+                                    content: const Text(
+                                        'You have already rated this day. Are you sure you want to overwrite your previous rating?'),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text('Cancel')),
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            saveRating();
+                                          },
+                                          child: const Text('Overwrite')),
+                                    ],
+                                  ));
+                        } else {
+                          saveRating();
+                        }
                       },
                 child: const Text('Save', style: TextStyle(fontSize: 28)),
               ),

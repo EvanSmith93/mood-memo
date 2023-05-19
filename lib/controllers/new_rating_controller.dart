@@ -9,7 +9,10 @@ class NewRatingController {
   List<bool> selected = [false, false, false, false, false];
   TextEditingController noteController = TextEditingController();
 
+  bool isComplete = false;
+
   void setValue(int index) {
+    if (index < 0 || index > 4) return;
     selected = [false, false, false, false, false];
     selected[index] = true;
   }
@@ -18,8 +21,17 @@ class NewRatingController {
     return selected.indexWhere((element) => element == true) + 1;
   }
 
+  RatingValue? getRatingValue() {
+    if (getValue() <= 0) return null;
+    return RatingValue.values[getValue()];
+  }
+
   bool isSelected(RatingValue value) {
     return selected[value.index - 1];
+  }
+
+  DateTime getDate() {
+    return selectedDate;
   }
 
   void setDate(DateTime date) {
@@ -33,5 +45,6 @@ class NewRatingController {
         value: RatingValue.values[getValue()],
         note: noteController.text);
     await db.setRating(rating);
+    isComplete = true;
   }
 }
