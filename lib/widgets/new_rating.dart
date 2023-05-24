@@ -78,7 +78,7 @@ class _NewRatingState extends State<NewRating> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: TextField(
-                maxLines: 4,
+                maxLines: 5,
                 controller: widget.controller.noteController,
                 textInputAction: TextInputAction.done,
                 decoration: const InputDecoration(
@@ -112,6 +112,7 @@ class _NewRatingState extends State<NewRating> {
                           Navigator.pop(navigatorKey.currentContext!);
                           widget.refresher(() {});
                         }
+                        // this should go in the controller
                         if (widget.date != widget.controller.getDate() && await DatabaseService().getRatingFromDay(
                                 widget.controller.getDate()) != null) {
                           showDialog(

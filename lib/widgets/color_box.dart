@@ -6,7 +6,7 @@ class ColorBox extends StatefulWidget {
   final RatingValue value;
   final NewRatingController controller;
 
-  ColorBox({Key? key, required this.value, required this.controller})
+  const ColorBox({Key? key, required this.value, required this.controller})
       : super(key: key);
 
   @override
@@ -16,14 +16,17 @@ class ColorBox extends StatefulWidget {
 class _ColorBoxState extends State<ColorBox> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Container(
-      width: 70,
-      height: 65,
+      width: width / 6,
+      height: width / 6.5,
       decoration: BoxDecoration(
-        color: widget.value.color.withOpacity(widget.controller.isSelected(widget.value) ? 1 : 0.8),
+        color: widget.value.color
+            .withOpacity(widget.controller.isSelected(widget.value) ? 1 : 0.8),
       ),
       child: Center(
-        child: Icon(widget.value.icon, size: widget.controller.isSelected(widget.value) ? 62 : 42),
+        child: Icon(widget.value.icon,
+            size: widget.controller.isSelected(widget.value) ? width / 7 : width / 9.5,),
       ),
     );
   }

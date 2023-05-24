@@ -18,12 +18,12 @@ class _CalendarState extends State<Calendar> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
-        height: 400,
+        height: MediaQuery.of(context).size.width,
         child: SfCalendar(
           view: CalendarView.month,
           showNavigationArrow: true,
           onTap: (calendarTapDetails) {
-            widget.controller.onTap(context, calendarTapDetails.date, setState);
+            widget.controller.onTap(calendarTapDetails.date, setState);
           },
           monthViewSettings:
               const MonthViewSettings(showTrailingAndLeadingDates: false),

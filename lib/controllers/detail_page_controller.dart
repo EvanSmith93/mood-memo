@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mood_log/models/rating.dart';
 import 'package:mood_log/services/db.dart';
 import 'package:mood_log/widgets/new_rating_popup.dart';
@@ -6,7 +5,7 @@ import 'package:mood_log/widgets/new_rating_popup.dart';
 class DetailPageController {
   DatabaseService db = DatabaseService();
 
-  void editRating(BuildContext context, Function refresher, Rating rating) {
+  void editRating(Function refresher, Rating rating) {
     showRatingPopup(refresher, rating.date, rating.value, rating.note);
   }
 

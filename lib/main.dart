@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
   // MAYBE NOT NEEDED : change color scheme option
   // MAYBE NOT NEEDED : change theme option
   
-  // TO DO : make the detail screen look better
   // TO DO : change the color scheme for the ratings
   // TO DO : contact support button
   // TO DO : clean up code (especially the new rating code)
+  // TO DO : test on android
 
   // DONE : let the user edit posts
   // DONE : fix keyboard bug
@@ -45,6 +45,9 @@ class MyApp extends StatelessWidget {
   // DONE : alert for deleting a rating
   // DONE : alert for deleting an unfinished rating
   // DONE : alert for adding a rating on top of another rating
+  // DONE : figure out if I need to pass the context around
+  // DONE : make the detail screen look better
+  // DONE : fix the bug with the new rating modal overlapping the dynamic island / notch
 
   // This widget is the root of your application.
   @override

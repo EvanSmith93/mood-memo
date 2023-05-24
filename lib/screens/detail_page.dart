@@ -24,7 +24,7 @@ class _DetailPageState extends State<DetailPage> {
           IconButton(
             onPressed: () async {
               Navigator.pop(context);
-              widget.controller.editRating(context, widget.refresher, widget.rating);
+              widget.controller.editRating(widget.refresher, widget.rating);
             }, 
             icon: const Icon(Icons.edit)
           )
@@ -35,27 +35,67 @@ class _DetailPageState extends State<DetailPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Rating: ",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600)
-            ),
-            Text(
-              "${widget.rating.value.number} out of 5", 
-              style: const TextStyle(fontSize: 24)
+            Row(
+              children: [
+              Icon(
+                widget.rating.value.icon,
+                size: 70,
+              ),
+              const SizedBox(width: 20),
+              Flexible(
+                child: Column(
+                  children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.rating.value.word,
+                        style: const TextStyle(fontSize: 20)
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  LinearProgressIndicator(
+                    value: widget.rating.value.number / 5,
+                    minHeight: 8,
+                    backgroundColor: Theme.of(context).brightness == Brightness.light
+                      ? Colors.grey[400]
+                      : Colors.grey[600],
+                    color: widget.rating.value.color,
+                  ),
+                  ],
+              ),
+              )
+              ],
             ),
             const SizedBox(height: 20),
-            const Text(
-              "Note: ",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600)
-            ),
-            Text(
-              widget.rating.note, 
-              style: const TextStyle(fontSize: 24)
-            ),
+              if (widget.rating.note.isNotEmpty) // Check if the note exists
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Note',
+                    style: TextStyle(fontSize: 18, color: Theme.of(context).hintColor),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    widget.rating.note,
+                    style: const TextStyle(fontSize: 24),
+                  ),
+                ],
+              ),
+            if (widget.rating.note.isEmpty) // Show "No note" if the note is empty
+              Center(
+                child: Text(
+                  'No note',
+                  style: TextStyle(fontSize: 18, color: Theme.of(context).hintColor),
+                ),
+              ),
             const Spacer(),
             Center(
               child: ElevatedButton.icon(
                 onPressed: () {
+                  // move this to the controller
                   showDialog(
                     context: context, 
                     builder: (BuildContext context) {
@@ -82,7 +122,7 @@ class _DetailPageState extends State<DetailPage> {
                     }
                   );
                 }, 
-                icon: const Icon(Icons.delete), 
+                icon: const Icon(Icons.delete),
                 label: const Text("Delete"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
@@ -93,7 +133,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 12),
           ],
         ),
       ),

@@ -16,25 +16,33 @@ void showRatingPopup(Function refresher, DateTime? date, RatingValue? rating, St
 
 void showRatingPopupHelper(NewRatingController controller, Function refresher, DateTime? date, RatingValue? rating, String? note) {
   showModalBottomSheet(
-    shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
-    isScrollControlled: true,
-    isDismissible: true,
-    context: navigatorKey.currentContext!,
-    builder: (context) => Padding(
-      padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-      child: SingleChildScrollView(
-          child: NewRating(
-        controller: controller,
-        refresher: refresher,
-        date: date,
-        rating: rating,
-        note: note,
-      )),
-    ),
-  ).whenComplete(() => {
-    
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
+  isScrollControlled: true,
+  isDismissible: true,
+  context: navigatorKey.currentContext!,
+  builder: (context) {
+    return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: (MediaQuery.of(context).size.height * 0.94) - MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: SingleChildScrollView(
+              child: NewRating(
+                controller: controller,
+                refresher: refresher,
+                date: date,
+                rating: rating,
+                note: note,
+              ),
+            ),
+          ),
+    );
+  },
+).whenComplete(() => {
         if (controller.noteController.text != (note ?? '') && controller.isComplete == false) {
             showDialog(
                 context: navigatorKey.currentContext!,

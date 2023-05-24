@@ -43,6 +43,23 @@ enum RatingValue {
     }
   }
 
+  String get word {
+    switch (this) {
+      case none:
+        return 'None';
+      case one:
+        return 'Bad';
+      case two:
+        return 'Not Good';
+      case three:
+        return 'Okay';
+      case four:
+        return 'Good';
+      case five:
+        return 'Great';
+    }
+  }
+
   IconData get icon {
     switch (this) {
       case none:

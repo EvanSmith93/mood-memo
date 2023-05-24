@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:mood_log/main.dart';
 import 'package:mood_log/models/rating.dart';
 import 'package:mood_log/screens/detail_page.dart';
 import 'package:mood_log/services/db.dart';
@@ -23,10 +24,10 @@ class ColorGridController {
     }
   }
 
-  void onTap(BuildContext context, DateTime? date, Function refresher) {
+  void onTap(DateTime? date, Function refresher) {
     if (days.containsKey(date.toString())) {
       Navigator.push(
-        context,
+        navigatorKey.currentContext!,
         MaterialPageRoute(
             builder: (context) => DetailPage(
                 rating: days[date.toString()]!, refresher: refresher)),
