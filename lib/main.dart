@@ -54,12 +54,13 @@ class _MyAppState extends State<MyApp> {
   // MAYBE NOT NEEDED : import and export data
   // MAYBE NOT NEEDED : donate button
   // MAYBE NOT NEEDED : change color scheme option
+  // MAYBE NOT NEEDED : fix a bug related to the theme on startup
 
   // TO DO : change the color scheme for the ratings
-  // TO DO : contact support button
   // TO DO : clean up code (especially the new rating code)
+  // TO Do : clean up the database code (make the functions static?)
   // TO DO : test on android
-  // TO DO : fix a bug related to the change theme button
+  // TO DO : fix all of the visual bugs when running on a physical device
 
   // DONE : let the user edit posts
   // DONE : fix keyboard bug
@@ -86,3 +87,4 @@ class _MyAppState extends State<MyApp> {
   // DONE : make the detail screen look better
   // DONE : fix the bug with the new rating modal overlapping the dynamic island / notch
   // DONE : change theme option
+  // DONE : contact support button
