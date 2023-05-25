@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/screens/tab_view.dart';
+import 'package:mood_log/screens/splash.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -9,20 +9,57 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // App Todos:
+  @override
+  _MyAppState createState() => _MyAppState();
+
+  static final ValueNotifier<ThemeMode> themeMode =
+      ValueNotifier(ThemeMode.system);
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+        valueListenable: MyApp.themeMode,
+        builder: (context, value, child) {
+          return MaterialApp(
+            title: 'Mood Log',
+            navigatorKey: navigatorKey,
+            themeMode: value,
+            theme: ThemeData(
+              brightness: Brightness.light,
+              colorScheme: const ColorScheme.light(
+                primary: Colors.blue,
+                secondary: Colors.blue,
+              ),
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              colorScheme: const ColorScheme.dark(
+                primary: Colors.blue,
+                secondary: Colors.blue,
+              ),
+            ),
+            home: const Splash(),
+          );
+        });
+  }
+}
+
+// App Todos:
 
   // MAYBE NOT NEEDED : import and export data
   // MAYBE NOT NEEDED : donate button
   // MAYBE NOT NEEDED : change color scheme option
-  // MAYBE NOT NEEDED : change theme option
-  
+
   // TO DO : change the color scheme for the ratings
   // TO DO : contact support button
   // TO DO : clean up code (especially the new rating code)
   // TO DO : test on android
+  // TO DO : fix a bug related to the change theme button
 
   // DONE : let the user edit posts
   // DONE : fix keyboard bug
@@ -48,29 +85,4 @@ class MyApp extends StatelessWidget {
   // DONE : figure out if I need to pass the context around
   // DONE : make the detail screen look better
   // DONE : fix the bug with the new rating modal overlapping the dynamic island / notch
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Mood Log',
-        themeMode: ThemeMode.system,
-        navigatorKey: navigatorKey,
-        theme: ThemeData(
-          brightness: Brightness.light,
-          colorScheme: const ColorScheme.light(
-            primary: Colors.blue,
-            secondary: Colors.blue,
-          ),
-        ),
-        darkTheme: ThemeData(
-          brightness: Brightness.dark,
-          colorScheme: const ColorScheme.dark(
-            primary: Colors.blue,
-            secondary: Colors.blue,
-          ),
-        ),
-        home: const TabView(),
-      );
-  }
-}
+  // DONE : change theme option

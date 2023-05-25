@@ -41,7 +41,7 @@ dependencies:
   firebase_auth: ^4.2.9
   google_sign_in: ^6.0.1
   localstorage: ^4.0.0+1
-  syncfusion_flutter_calendar: ^20.4.51
+  syncfusion_flutter_calendar: ^21.2.6
   flutter_signin_button: ^2.0.0
   modal_bottom_sheet: 3.0.0-pre
   shared_preferences: ^2.1.1

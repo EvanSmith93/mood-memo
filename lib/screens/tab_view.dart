@@ -14,7 +14,7 @@ class _TabViewState extends State<TabView> {
   
   final List<Widget> _children = [
     const HomePage(),
-    const Settings(),
+    Settings(),
   ];
 
   @override

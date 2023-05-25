@@ -1,12 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'package:mood_log/models/rating.dart';
 
 class DatabaseService {
-  SharedPreferences? _prefs;
+  static SharedPreferences? _prefs;
 
-  Future<void> _initPrefs() async {
+  static Future<void> _initPrefs() async {
     _prefs ??= await SharedPreferences.getInstance();
+  }
+
+  DatabaseService() {
+    _initPrefs();
+
   }
 
   String formatDate(DateTime date) {
@@ -48,5 +54,16 @@ class DatabaseService {
     final docKey = formatDate(DateTime.parse(date));
     _prefs!.remove('rating_$docKey');
     _prefs!.remove('note_$docKey');
+  }
+
+  static Future<ThemeMode> getThemeMode() async {
+    await _initPrefs();
+    final themeMode = _prefs!.getInt('theme_mode');
+    return themeMode != null ? ThemeMode.values[themeMode] : ThemeMode.system;
+  }
+  
+  static Future<void> setThemeMode(ThemeMode mode) async {
+    await _initPrefs();
+    _prefs!.setInt('theme_mode', mode.index);
   }
 }
