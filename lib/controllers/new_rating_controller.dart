@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mood_log/main.dart';
 import 'package:mood_log/models/rating.dart';
 import 'package:mood_log/services/db.dart';
+import 'package:mood_log/widgets/new_rating_popup.dart';
 
 class NewRatingController {
   DatabaseService db = DatabaseService();
@@ -46,5 +48,63 @@ class NewRatingController {
         note: noteController.text);
     await db.setRating(rating);
     isComplete = true;
+  }
+
+  // show alert dialog
+  Future<void> showUnsavedAlert(Function refresher, DateTime? date, RatingValue? rating, String? note) async {
+    showDialog(
+        context: navigatorKey.currentContext!,
+        builder: (context) => AlertDialog(
+              title: const Text('Discard changes?'),
+              content: const Text(
+                  'You have unsaved changes. Are you sure you want to discard them?'),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Discard')),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      showRatingPopupHelper(
+                          this, refresher, date, rating, note);
+                    },
+                    child: const Text('Keep Editing')),
+              ],
+            ));
+  }
+
+  Future<void> showOverwriteAlert(DateTime? date, Function refresher) async {
+    void saveRating() async {
+        await updateRating(db.formatDate(date ?? DateTime.now()));
+        Navigator.pop(navigatorKey.currentContext!);
+        refresher(() {});
+      }
+      if (date != getDate() && await db.getRatingFromDay(
+              getDate()) != null) {
+        showDialog(
+            context: navigatorKey.currentContext!,
+            builder: (context) => AlertDialog(
+                  title: const Text('Overwrite rating?'),
+                  content: const Text(
+                      'You have already rated this day. Are you sure you want to overwrite your previous rating?'),
+                  actions: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Cancel')),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          saveRating();
+                        },
+                        child: const Text('Overwrite')),
+                  ],
+                ));
+      } else {
+        saveRating();
+      }
   }
 }

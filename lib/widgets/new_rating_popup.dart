@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:mood_log/controllers/new_rating_controller.dart';
 import 'package:mood_log/main.dart';
 import 'package:mood_log/models/rating.dart';
@@ -18,52 +19,40 @@ void showRatingPopupHelper(NewRatingController controller, Function refresher, D
   showModalBottomSheet(
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
-  isScrollControlled: true,
+  enableDrag: true,
   isDismissible: true,
+  isScrollControlled: true,
+  showDragHandle: true,
+  useSafeArea: true,
   context: navigatorKey.currentContext!,
   builder: (context) {
     return Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          var focusScope = FocusScope.of(context);
+          if (!focusScope.hasPrimaryFocus) focusScope.unfocus();
+        },
+        child: SingleChildScrollView(
+          controller: ModalScrollController.of(context),
+          // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: NewRating(
+            controller: controller,
+            refresher: refresher,
+            date: date,
+            rating: rating,
+            note: note,
           ),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: (MediaQuery.of(context).size.height * 0.94) - MediaQuery.of(context).viewInsets.bottom,
-            ),
-            child: SingleChildScrollView(
-              child: NewRating(
-                controller: controller,
-                refresher: refresher,
-                date: date,
-                rating: rating,
-                note: note,
-              ),
-            ),
-          ),
+        ),
+      ),
     );
   },
 ).whenComplete(() => {
-        if (controller.noteController.text != (note ?? '') && controller.isComplete == false) {
-            showDialog(
-                context: navigatorKey.currentContext!,
-                builder: (context) => AlertDialog(
-                      title: const Text('Discard changes?'),
-                      content: const Text(
-                          'You have unsaved changes. Are you sure you want to discard them?'),
-                      actions: [
-                        TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Discard')),
-                        TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              showRatingPopupHelper(controller, refresher, date, rating, note);
-                            },
-                            child: const Text('Keep Editing')),
-                      ],
-                    ))
-          }
-      });
+  if (controller.noteController.text != (note ?? '') && controller.isComplete == false) {
+      controller.showUnsavedAlert(refresher, date, rating, note)
+    }
+});
 }

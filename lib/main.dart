@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
   // MAYBE NOT NEEDED : donate button
   // MAYBE NOT NEEDED : change color scheme option
   // MAYBE NOT NEEDED : fix a bug related to the theme on startup
+  // MAYBE NOT NEEDED : fix the bug related to the modal bottom sheet scrolling weird (warning: this might be a bug with flutter. Flutter issue # 24489)
 
   // TO DO : change the color scheme for the ratings
   // TO DO : clean up code (especially the new rating code)

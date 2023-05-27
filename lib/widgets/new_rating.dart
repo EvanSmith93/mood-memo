@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_log/controllers/new_rating_controller.dart';
-import 'package:mood_log/main.dart';
-import 'package:mood_log/services/db.dart';
 import 'package:mood_log/widgets/color_box.dart';
 import 'package:mood_log/models/rating.dart';
 
@@ -35,16 +33,8 @@ class _NewRatingState extends State<NewRating> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 50,
-              height: 4,
-              decoration: const BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.all(Radius.circular(14)),
-              ),
-            ),
             const Padding(
-              padding: EdgeInsets.all(12.0),
+              padding: EdgeInsets.only(bottom: 12),
               child: Text(
                 'Rate your day',
                 style: TextStyle(fontSize: 30),
@@ -107,42 +97,12 @@ class _NewRatingState extends State<NewRating> {
                 onPressed: widget.controller.getValue() == 0
                     ? null
                     : () async {
-                        void saveRating() async {
-                          await widget.controller.updateRating(DatabaseService().formatDate(widget.date ?? DateTime.now()));
-                          Navigator.pop(navigatorKey.currentContext!);
-                          widget.refresher(() {});
-                        }
-                        // this should go in the controller
-                        if (widget.date != widget.controller.getDate() && await DatabaseService().getRatingFromDay(
-                                widget.controller.getDate()) != null) {
-                          showDialog(
-                              context: navigatorKey.currentContext!,
-                              builder: (context) => AlertDialog(
-                                    title: const Text('Overwrite rating?'),
-                                    content: const Text(
-                                        'You have already rated this day. Are you sure you want to overwrite your previous rating?'),
-                                    actions: [
-                                      TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text('Cancel')),
-                                      TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            saveRating();
-                                          },
-                                          child: const Text('Overwrite')),
-                                    ],
-                                  ));
-                        } else {
-                          saveRating();
-                        }
+                        widget.controller.showOverwriteAlert(widget.date, widget.refresher);
                       },
                 child: const Text('Save', style: TextStyle(fontSize: 28)),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
           ]),
     );
   }
