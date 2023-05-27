@@ -35,21 +35,21 @@ class _NewRatingState extends State<NewRating> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /*Container(
-                    width: 50,
-                    height: 4,
-                    decoration: const BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(14)),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Text(
-                      'Rate your day',
-                      style: TextStyle(fontSize: 30),
-                    ),
-                  ),*/
+            Container(
+              width: 50,
+              height: 4,
+              decoration: const BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.all(Radius.circular(14)),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text(
+                'Rate your day',
+                style: TextStyle(fontSize: 30),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: ToggleButtons(
