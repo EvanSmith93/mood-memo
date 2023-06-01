@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_memo/controllers/detail_page_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:mood_memo/controllers/detail_controller.dart';
 import 'package:mood_memo/models/rating.dart';
 
-class DetailPage extends StatefulWidget {
+class Detail extends StatefulWidget {
   final Rating rating;
   final Function refresher;
-  DetailPage({super.key, required this.rating, required this.refresher});
+  Detail({super.key, required this.rating, required this.refresher});
 
   final DetailPageController controller = DetailPageController();
 
   @override
-  State<DetailPage> createState() => _DetailPageState();
+  State<Detail> createState() => _DetailState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _DetailState extends State<Detail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

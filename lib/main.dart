@@ -29,20 +29,39 @@ class _MyAppState extends State<MyApp> {
             title: 'Mood Memo',
             navigatorKey: navigatorKey,
             themeMode: value,
-            theme: ThemeData(
-              brightness: Brightness.light,
+            theme: ThemeData.light().copyWith(
               colorScheme: const ColorScheme.light(
                 primary: Colors.blue,
                 secondary: Colors.blue,
               ),
+              appBarTheme: AppBarTheme(
+                backgroundColor: ThemeData.light().scaffoldBackgroundColor,
+                elevation: 0,
+                iconTheme: const IconThemeData(color: Colors.black),
+                titleTextStyle: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
-            darkTheme: ThemeData(
-              brightness: Brightness.dark,
+            darkTheme: ThemeData.dark().copyWith(
               colorScheme: const ColorScheme.dark(
                 primary: Colors.blue,
                 secondary: Colors.blue,
               ),
+              appBarTheme: AppBarTheme(
+                backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
+                elevation: 0,
+                iconTheme: const IconThemeData(color: Colors.white),
+                titleTextStyle: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
+
             home: const Splash(),
           );
         });
@@ -58,10 +77,7 @@ class _MyAppState extends State<MyApp> {
   // MAYBE NOT NEEDED : add a donate button
 
   // TO DO : change the color scheme for the ratings
-  // TO Do : clean up the database code (make the functions static?)
   // TO DO : test on android (possibly already done)
-  // TO DO : change name to mood memo
-  // TO DO : put settings in the navigation bar and temporarily remove the bottom bar
 
   // DONE : let the user edit posts
   // DONE : fix keyboard bug
@@ -94,3 +110,6 @@ class _MyAppState extends State<MyApp> {
   // DONE : don't highlight the most recently clicked date on the calendar
   // DONE : make the calendar not swipable past the current date
   // DONE : highlight the current date on the calendar
+  // DONE : change name to mood memo
+  // DONE : clean up the database code (make the functions static?)
+  // DONE : put settings in the navigation bar and temporarily remove the bottom bar

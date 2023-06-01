@@ -28,8 +28,7 @@ class _CalendarState extends State<Calendar> {
           showDatePickerButton: true,
           onTap: (calendarTapDetails) {
             if (calendarTapDetails.targetElement ==
-                CalendarElement.calendarCell)
-              widget.controller.onTap(calendarTapDetails.date, setState);
+                CalendarElement.calendarCell) widget.controller.onTap(calendarTapDetails.date, setState);
           },
           monthViewSettings:
               const MonthViewSettings(showTrailingAndLeadingDates: false),

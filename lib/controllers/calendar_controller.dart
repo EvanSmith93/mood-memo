@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/main.dart';
 import 'package:mood_memo/models/rating.dart';
-import 'package:mood_memo/screens/detail_page.dart';
+import 'package:mood_memo/screens/detail.dart';
 import 'package:mood_memo/services/db.dart';
 
 import '../widgets/new_rating_popup.dart';
@@ -28,7 +28,7 @@ class ColorGridController {
       Navigator.push(
         navigatorKey.currentContext!,
         MaterialPageRoute(
-            builder: (context) => DetailPage(
+            builder: (context) => Detail(
                 rating: days[date.toString()]!, refresher: refresher)),
       );
     } else {

@@ -44,7 +44,9 @@ class _NewRatingState extends State<NewRating> {
               padding: const EdgeInsets.all(12.0),
               child: ToggleButtons(
                 isSelected: widget.controller.selected,
-                selectedColor: Theme.of(context).textTheme.bodyMedium?.color,
+                color: Colors.white,
+                selectedColor: Colors.white,
+                //selectedColor: Theme.of(context).textTheme.bodyMedium?.color,
                 borderRadius: const BorderRadius.all(Radius.circular(7)),
                 children: [
                   ColorBox(
@@ -100,7 +102,7 @@ class _NewRatingState extends State<NewRating> {
                         widget.controller
                             .saveRating(widget.date, widget.refresher);
                       },
-                child: const Text('Save', style: TextStyle(fontSize: 28)),
+                child: const Text('Save', style: TextStyle(fontSize: 28, color: Colors.white)),
               ),
             ),
             const SizedBox(height: 10),

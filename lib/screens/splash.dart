@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mood_memo/controllers/settings_controller.dart';
-import 'package:mood_memo/screens/tab_view.dart';
+import 'package:mood_memo/screens/home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -28,6 +28,6 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    return shouldProceed ? const TabView() : const SizedBox.shrink();
+    return shouldProceed ? const Home() : const SizedBox.shrink();
   }
 }
