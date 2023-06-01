@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 import 'package:mood_memo/services/date.dart';
 
 enum RatingValue {
@@ -91,18 +91,5 @@ class Rating {
 
   String getPrettyDate() {
     return DateService.prettyFormatDate(date);
-  }
-
-  // should include the note
-  Rating.fromJson(Map<String, dynamic> json)
-      : value = RatingValue.values[json['value']],
-        date = DateTime.parse(json['date']);
-
-  // should also include the note
-  Map<String, dynamic> toJson() {
-    return {
-      'value': value.index,
-      'date': date.toString(),
-    };
   }
 }

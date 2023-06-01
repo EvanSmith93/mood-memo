@@ -20,7 +20,7 @@ class NewRating extends StatefulWidget {
       : super(key: key);
 
   @override
-  _NewRatingState createState() => _NewRatingState();
+  State<NewRating> createState() => _NewRatingState();
 }
 
 class _NewRatingState extends State<NewRating> {

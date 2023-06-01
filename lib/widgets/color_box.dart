@@ -10,7 +10,7 @@ class ColorBox extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ColorBoxState createState() => _ColorBoxState();
+  State<ColorBox> createState() => _ColorBoxState();
 }
 
 class _ColorBoxState extends State<ColorBox> {

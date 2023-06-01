@@ -51,10 +51,7 @@ class SettingsController extends ChangeNotifier {
         'subject': 'Mood Memo Feedback',
         // ignore: prefer_interpolation_to_compose_strings
         'body':
-            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\n' +
-                'Device: ${await _getDeviceModel()}\n' +
-                'OS: ${await _getSystemVersion()}\n' +
-                'App Version: ${DatabaseService.getAppVersion()}\n',
+            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\nDevice: ${await _getDeviceModel()}\nOS: ${await _getSystemVersion()}\nApp Version: ${DatabaseService.getAppVersion()}\n',
       }),
     );
 
