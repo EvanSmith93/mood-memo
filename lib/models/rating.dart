@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/services/db.dart';
+import 'package:mood_memo/services/date.dart';
 
 enum RatingValue {
   none,
@@ -86,11 +86,11 @@ class Rating {
   Rating({required this.date, required this.value, required this.note});
 
   String getDate() {
-    return DatabaseService().formatDate(date);
+    return DateService.formatDate(date);
   }
 
   String getPrettyDate() {
-    return DatabaseService().prettyFormatDate(date);
+    return DateService.prettyFormatDate(date);
   }
 
   // should include the note

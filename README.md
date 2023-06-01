@@ -1,4 +1,4 @@
-# mood_log
+# mood_memo
 
 A new Flutter project.
 

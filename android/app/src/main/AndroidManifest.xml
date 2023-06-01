@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mood_log">
+    package="com.example.mood_memo">
    <application
-        android:label="mood_log"
+        android:label="Mood Memo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

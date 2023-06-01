@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:mood_log/main.dart';
-import 'package:mood_log/services/db.dart';
+import 'package:flutter/services.dart';
+import 'package:mood_memo/main.dart';
+import 'package:mood_memo/services/db.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsController extends ChangeNotifier {
   DatabaseService db = DatabaseService();
@@ -29,5 +34,75 @@ class SettingsController extends ChangeNotifier {
     MyApp.themeMode.value = mode;
     theme = mode;
     await DatabaseService.setThemeMode(mode);
+  }
+
+  void sendFeedback() async {
+    String? encodeQueryParameters(Map<String, String> params) {
+      return params.entries
+          .map((MapEntry<String, String> e) =>
+              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+          .join('&');
+    }
+
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: 'moodmemofeedback@gmail.com',
+      query: encodeQueryParameters(<String, String>{
+        'subject': 'Mood Memo Feedback',
+        // ignore: prefer_interpolation_to_compose_strings
+        'body':
+            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\n' +
+                'Device: ${await _getDeviceModel()}\n' +
+                'OS: ${await _getSystemVersion()}\n' +
+                'App Version: ${DatabaseService.getAppVersion()}\n',
+      }),
+    );
+
+    if (await canLaunchUrl(emailUri)) {
+      await launchUrl(emailUri);
+    } else {
+      throw 'Could not launch email app.';
+    }
+  }
+
+  Future<String> _getDeviceModel() async {
+    try {
+      if (Platform.isIOS) {
+        final deviceInfo = await DeviceInfoPlugin().iosInfo;
+        return deviceInfo.utsname.machine;
+      } else if (Platform.isAndroid) {
+        final deviceInfo = await DeviceInfoPlugin().androidInfo;
+        return deviceInfo.model;
+      }
+    } on PlatformException {
+      return 'error getting device model';
+    }
+    return 'error getting device model';
+  }
+
+  Future<String> _getSystemVersion() async {
+    try {
+      if (Platform.isIOS) {
+        final deviceInfo = await DeviceInfoPlugin().iosInfo;
+        return deviceInfo.systemVersion;
+      } else if (Platform.isAndroid) {
+        final deviceInfo = await DeviceInfoPlugin().androidInfo;
+        return deviceInfo.version.release;
+      }
+    } on PlatformException {
+      return 'error getting system version';
+    }
+    return 'error getting system version';
+  }
+
+  void rateApp() {
+    launchUrl(Uri(
+      scheme: 'https',
+      host: 'play.google.com',
+      path: 'store/apps/details',
+      queryParameters: <String, String>{
+        'id': 'com.moodmemo.mood_memo',
+      },
+    ));
   }
 }

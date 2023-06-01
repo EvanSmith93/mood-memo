@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/controllers/new_rating_controller.dart';
-import 'package:mood_log/widgets/color_box.dart';
-import 'package:mood_log/models/rating.dart';
+import 'package:mood_memo/controllers/new_rating_controller.dart';
+import 'package:mood_memo/widgets/color_box.dart';
+import 'package:mood_memo/models/rating.dart';
 
 class NewRating extends StatefulWidget {
   final NewRatingController controller;
@@ -97,7 +97,8 @@ class _NewRatingState extends State<NewRating> {
                 onPressed: widget.controller.getValue() == 0
                     ? null
                     : () async {
-                        widget.controller.showOverwriteAlert(widget.date, widget.refresher);
+                        widget.controller
+                            .saveRating(widget.date, widget.refresher);
                       },
                 child: const Text('Save', style: TextStyle(fontSize: 28)),
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/controllers/new_rating_controller.dart';
-import 'package:mood_log/models/rating.dart';
+import 'package:mood_memo/controllers/new_rating_controller.dart';
+import 'package:mood_memo/models/rating.dart';
 
 class ColorBox extends StatefulWidget {
   final RatingValue value;
@@ -25,8 +25,12 @@ class _ColorBoxState extends State<ColorBox> {
             .withOpacity(widget.controller.isSelected(widget.value) ? 1 : 0.8),
       ),
       child: Center(
-        child: Icon(widget.value.icon,
-            size: widget.controller.isSelected(widget.value) ? width / 7 : width / 9.5,),
+        child: Icon(
+          widget.value.icon,
+          size: widget.controller.isSelected(widget.value)
+              ? width / 7
+              : width / 9.5,
+        ),
       ),
     );
   }

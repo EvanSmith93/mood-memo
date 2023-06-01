@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/main.dart';
-import 'package:mood_log/models/rating.dart';
-import 'package:mood_log/screens/detail_page.dart';
-import 'package:mood_log/services/db.dart';
+import 'package:mood_memo/main.dart';
+import 'package:mood_memo/models/rating.dart';
+import 'package:mood_memo/screens/detail_page.dart';
+import 'package:mood_memo/services/db.dart';
 
 import '../widgets/new_rating_popup.dart';
 
@@ -10,8 +10,7 @@ class ColorGridController {
   Map<String, Rating> days = {};
 
   Future<Rating?> getRating(DateTime date) async {
-    DatabaseService db = DatabaseService();
-    Rating? rating = await db.getRatingFromDay(date);
+    Rating? rating = await DatabaseService.getRatingFromDay(date);
 
     if (rating != null) {
       days[date.toString()] = rating;
@@ -32,7 +31,7 @@ class ColorGridController {
             builder: (context) => DetailPage(
                 rating: days[date.toString()]!, refresher: refresher)),
       );
-    } else if (!date!.isAfter(DateTime.now())) {
+    } else {
       showRatingPopup(refresher, date, null, null);
     }
   }

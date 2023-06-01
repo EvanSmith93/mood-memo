@@ -1,3 +1,4 @@
 {
-  "cmake.configureOnOpen": true
+  "cmake.configureOnOpen": true,
+  "cmake.sourceDirectory": "/Users/evansmith/Desktop/Current coding projects/mood-memo/linux"
 }

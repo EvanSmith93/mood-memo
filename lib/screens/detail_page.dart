@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/controllers/detail_page_controller.dart';
-import 'package:mood_log/models/rating.dart';
+import 'package:mood_memo/controllers/detail_page_controller.dart';
+import 'package:mood_memo/models/rating.dart';
 
 class DetailPage extends StatefulWidget {
   final Rating rating;

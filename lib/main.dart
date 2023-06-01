@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:mood_log/screens/splash.dart';
+import 'package:mood_memo/screens/splash.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
         valueListenable: MyApp.themeMode,
         builder: (context, value, child) {
           return MaterialApp(
-            title: 'Mood Log',
+            title: 'Mood Memo',
             navigatorKey: navigatorKey,
             themeMode: value,
             theme: ThemeData(
@@ -52,16 +52,16 @@ class _MyAppState extends State<MyApp> {
 // App Todos:
 
   // MAYBE NOT NEEDED : import and export data
-  // MAYBE NOT NEEDED : donate button
   // MAYBE NOT NEEDED : change color scheme option
-  // MAYBE NOT NEEDED : fix a bug related to the theme on startup
-  // MAYBE NOT NEEDED : fix the bug related to the modal bottom sheet scrolling weird (warning: this might be a bug with flutter. Flutter issue # 24489)
+  // MAYBE NOT NEEDED : fix a bug related to the theme on startup (this might be helped by adding a splash screen)
+  // MAYBE NOT NEEDED : fix the bug related to the modal bottom sheet scrolling weird (warning: this might be a bug with flutter. Flutter GitHub issue # 24489)
+  // MAYBE NOT NEEDED : add a donate button
 
   // TO DO : change the color scheme for the ratings
-  // TO DO : clean up code (especially the new rating code)
   // TO Do : clean up the database code (make the functions static?)
-  // TO DO : test on android
-  // TO DO : fix all of the visual bugs when running on a physical device
+  // TO DO : test on android (possibly already done)
+  // TO DO : change name to mood memo
+  // TO DO : put settings in the navigation bar and temporarily remove the bottom bar
 
   // DONE : let the user edit posts
   // DONE : fix keyboard bug
@@ -89,3 +89,8 @@ class _MyAppState extends State<MyApp> {
   // DONE : fix the bug with the new rating modal overlapping the dynamic island / notch
   // DONE : change theme option
   // DONE : contact support button
+  // DONE : fix all of the visual bugs when running on a physical device
+  // DONE : clean up the new rating code
+  // DONE : don't highlight the most recently clicked date on the calendar
+  // DONE : make the calendar not swipable past the current date
+  // DONE : highlight the current date on the calendar

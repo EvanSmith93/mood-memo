@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mood_log/controllers/settings_controller.dart';
-import 'package:mood_log/screens/tab_view.dart';
+import 'package:mood_memo/controllers/settings_controller.dart';
+import 'package:mood_memo/screens/tab_view.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});

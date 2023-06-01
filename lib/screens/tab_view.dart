@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mood_log/screens/home_page.dart';
-import 'package:mood_log/screens/settings.dart';
+import 'package:mood_memo/screens/home_page.dart';
+import 'package:mood_memo/screens/settings.dart';
 
 class TabView extends StatefulWidget {
   const TabView({super.key});
@@ -11,7 +11,7 @@ class TabView extends StatefulWidget {
 
 class _TabViewState extends State<TabView> {
   int _currentIndex = 0;
-  
+
   final List<Widget> _children = [
     const HomePage(),
     Settings(),
@@ -21,7 +21,9 @@ class _TabViewState extends State<TabView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mood Log', style: TextStyle(color: Theme.of(context).textTheme.titleMedium!.color)),
+        title: Text('Mood Memo',
+            style: TextStyle(
+                color: Theme.of(context).textTheme.titleMedium!.color)),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: _children[_currentIndex],

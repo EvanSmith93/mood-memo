@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mood_log/main.dart';
-import 'package:mood_log/models/rating.dart';
-import 'package:mood_log/services/db.dart';
-import 'package:mood_log/widgets/new_rating_popup.dart';
+import 'package:mood_memo/main.dart';
+import 'package:mood_memo/models/rating.dart';
+import 'package:mood_memo/services/date.dart';
+import 'package:mood_memo/services/db.dart';
+import 'package:mood_memo/widgets/new_rating_popup.dart';
 
 class NewRatingController {
-  DatabaseService db = DatabaseService();
-
   DateTime selectedDate = DateTime.now();
   List<bool> selected = [false, false, false, false, false];
   TextEditingController noteController = TextEditingController();
@@ -41,17 +40,17 @@ class NewRatingController {
   }
 
   Future<void> updateRating(String initDate) async {
-    await db.deleteRating(initDate);
+    await DatabaseService.deleteRating(initDate);
     Rating rating = Rating(
         date: selectedDate,
         value: RatingValue.values[getValue()],
         note: noteController.text);
-    await db.setRating(rating);
+    await DatabaseService.setRating(rating);
     isComplete = true;
   }
 
-  // show alert dialog
-  Future<void> showUnsavedAlert(Function refresher, DateTime? date, RatingValue? rating, String? note) async {
+  Future<void> showUnsavedAlert(Function refresher, DateTime? date,
+      RatingValue? rating, String? note) async {
     showDialog(
         context: navigatorKey.currentContext!,
         builder: (context) => AlertDialog(
@@ -75,36 +74,37 @@ class NewRatingController {
             ));
   }
 
-  Future<void> showOverwriteAlert(DateTime? date, Function refresher) async {
+  Future<void> saveRating(DateTime? date, Function refresher) async {
     void saveRating() async {
-        await updateRating(db.formatDate(date ?? DateTime.now()));
-        Navigator.pop(navigatorKey.currentContext!);
-        refresher(() {});
-      }
-      if (date != getDate() && await db.getRatingFromDay(
-              getDate()) != null) {
-        showDialog(
-            context: navigatorKey.currentContext!,
-            builder: (context) => AlertDialog(
-                  title: const Text('Overwrite rating?'),
-                  content: const Text(
-                      'You have already rated this day. Are you sure you want to overwrite your previous rating?'),
-                  actions: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('Cancel')),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          saveRating();
-                        },
-                        child: const Text('Overwrite')),
-                  ],
-                ));
-      } else {
-        saveRating();
-      }
+      await updateRating(DateService.formatDate(date ?? DateTime.now()));
+      Navigator.pop(navigatorKey.currentContext!);
+      refresher(() {});
+    }
+
+    if (date != getDate() &&
+        await DatabaseService.getRatingFromDay(getDate()) != null) {
+      showDialog(
+          context: navigatorKey.currentContext!,
+          builder: (context) => AlertDialog(
+                title: const Text('Overwrite rating?'),
+                content: const Text(
+                    'You have already rated this day. Are you sure you want to overwrite your previous rating?'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Cancel')),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        saveRating();
+                      },
+                      child: const Text('Overwrite')),
+                ],
+              ));
+    } else {
+      saveRating();
+    }
   }
 }

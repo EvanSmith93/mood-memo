@@ -1,4 +1,4 @@
-name: mood_log
+name: mood_memo
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.1.1
   intl: ^0.18.1
   url_launcher: ^6.1.11
+  device_info_plus: ^9.0.1
 
 dev_dependencies:
   flutter_test:

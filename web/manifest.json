@@ -1,6 +1,6 @@
 {
-    "name": "mood_log",
-    "short_name": "mood_log",
+    "name": "mood_memo",
+    "short_name": "mood_memo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
