@@ -28,17 +28,27 @@ class _CalendarBoxState extends State<CalendarBox> {
                             ? Colors.grey[400]
                             : Colors.grey[600]
                         : Theme.of(context).brightness == Brightness.light
-                            ? Colors.grey[300]
-                            : Colors.grey[700],
+                            ? Colors.grey[200]
+                            : Colors.grey[800],
+                border: Border.all(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  width: 0.6
+                )
+              ),
+            child: Container(
+              decoration: BoxDecoration(
                 border: Border.all(
                     color: DateService.isSameDay(
-                            widget.details.date, DateTime.now())
-                        ? Colors.yellow
-                        : Theme.of(context).scaffoldBackgroundColor,
-                    width: 0.6)),
-            child: Center(
-              child: Text(
-                widget.details.date.day.toString(),
+                            widget.details.date, DateTime.now()) && !snapshot.hasData
+                        ? Theme.of(context).colorScheme.primary
+                        : Colors.transparent,
+                    width: 1.8
+              ),
+              ),
+              child: Center(
+                child: Text(
+                  widget.details.date.day.toString(),
+                ),
               ),
             ),
           );

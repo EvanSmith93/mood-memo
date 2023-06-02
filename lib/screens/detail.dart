@@ -18,16 +18,25 @@ class _DetailState extends State<Detail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.rating.getPrettyDate()),
+        title: Text(
+          widget.rating.getPrettyDate(),
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: widget.rating.value.color,
         actions: [
           IconButton(
-              onPressed: () async {
-                Navigator.pop(context);
-                widget.controller.editRating(widget.refresher, widget.rating);
-              },
-              icon: const Icon(Icons.edit))
+            onPressed: () async {
+              Navigator.pop(context);
+              widget.controller.editRating(widget.refresher, widget.rating);
+            },
+            icon: const Icon(Icons.edit),
+          )
         ],
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

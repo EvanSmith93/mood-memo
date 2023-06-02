@@ -29,17 +29,17 @@ enum RatingValue {
   Color get color {
     switch (this) {
       case none:
-        return Colors.grey;
+        return Colors.black;
       case one:
-        return Colors.red;
+        return const Color.fromARGB(255, 225, 56, 56);
       case two:
-        return Colors.orange;
+        return const Color.fromARGB(255, 222, 108, 51);
       case three:
-        return Colors.blue;
+        return const Color.fromARGB(255, 72, 101, 220);
       case four:
-        return Colors.purple;
+        return const Color.fromARGB(255, 94, 202, 62);
       case five:
-        return Colors.green;
+        return const Color.fromARGB(255, 226, 190, 47);
     }
   }
 
