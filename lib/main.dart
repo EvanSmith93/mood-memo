@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
         builder: (context, value, child) {
           return MaterialApp(
             title: 'Mood Memo',
+            debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
             themeMode: value,
             theme: ThemeData.light().copyWith(

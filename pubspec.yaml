@@ -41,6 +41,12 @@ dependencies:
   intl: ^0.18.1
   url_launcher: ^6.1.11
   device_info_plus: ^9.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon_light.png"
 
 dev_dependencies:
   flutter_test:
