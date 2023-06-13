@@ -19,6 +19,7 @@ class _SettingsState extends State<Settings> {
         ),
       body: ListView(
         children: [
+          // theme selection
           ExpansionTile(
             title: const Text('Theme'),
             subtitle: Text(widget.controller.themeName),
@@ -64,13 +65,13 @@ class _SettingsState extends State<Settings> {
             },
           ),
           // rate app button -> opens app store
-          /*ListTile(
+          ListTile(
             title: const Text('Rate App'),
             trailing: const Icon(Icons.arrow_forward),
             onTap: () {
               widget.controller.rateApp();
             },
-          ),*/
+          ),
         ],
       ),
     );

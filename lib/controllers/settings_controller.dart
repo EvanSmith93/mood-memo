@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:mood_memo/main.dart';
 import 'package:mood_memo/services/db.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsController extends ChangeNotifier {
@@ -50,7 +51,7 @@ class SettingsController extends ChangeNotifier {
       query: encodeQueryParameters(<String, String>{
         'subject': 'Mood Memo Feedback',
         'body':
-            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\nDevice: ${await _getDeviceModel()}\nOS: ${await _getSystemVersion()}\nApp Version: ${DatabaseService.getAppVersion()}\n',
+            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\nDevice: ${await _getDeviceModel()}\nOS: ${await _getSystemVersion()}\nApp Version: ${await _getAppVersion()}\n',
       }),
     );
 
@@ -91,14 +92,28 @@ class SettingsController extends ChangeNotifier {
     return 'error getting system version';
   }
 
-  void rateApp() {
-    launchUrl(Uri(
+  Future<String> _getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    String appVersion = packageInfo.version;
+    return appVersion;
+  }
+
+  void rateApp() async {
+    const String appId = 'com.evansmith.mood_memo';
+
+    final uri = Uri(
       scheme: 'https',
       host: 'play.google.com',
       path: 'store/apps/details',
       queryParameters: <String, String>{
-        'id': 'com.moodmemo.mood_memo',
+        'id': appId,
       },
-    ));
+    );
+
+    try {
+      await launchUrl(uri);
+    } catch (e) {
+      throw 'Could not launch app store.';
+    }
   }
 }

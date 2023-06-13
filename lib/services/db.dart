@@ -50,9 +50,4 @@ class DatabaseService {
     await _initPrefs();
     _prefs!.setInt('theme_mode', mode.index);
   }
-
-  static String getAppVersion() {
-    // update this for each release
-    return '1.0.0';
-  }
 }
