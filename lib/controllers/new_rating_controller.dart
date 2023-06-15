@@ -41,6 +41,7 @@ class NewRatingController {
 
   Future<void> updateRating(String initDate) async {
     await DatabaseService.deleteRating(initDate);
+    
     Rating rating = Rating(
         date: selectedDate,
         value: RatingValue.values[getValue()],

@@ -14,8 +14,8 @@ class DatabaseService {
   static Future<void> setRating(Rating rating) async {
     await _initPrefs();
     final docKey = DateService.formatDate(rating.date);
-    _prefs!.setInt('rating_$docKey', rating.value.number);
-    _prefs!.setString('note_$docKey', rating.note);
+    await _prefs!.setInt('rating_$docKey', rating.value.number);
+    await _prefs!.setString('note_$docKey', rating.note);
   }
 
   static Future<Rating?> getRatingFromDay(DateTime day) async {
@@ -27,7 +27,7 @@ class DatabaseService {
       return Rating(
         date: day,
         value: RatingValue.values[value],
-        note: note ?? '',
+        note: note ?? 'error',
       );
     }
     return null;
@@ -36,8 +36,8 @@ class DatabaseService {
   static Future<void> deleteRating(String date) async {
     await _initPrefs();
     final docKey = DateService.formatDate(DateTime.parse(date));
-    _prefs!.remove('rating_$docKey');
-    _prefs!.remove('note_$docKey');
+    await _prefs!.remove('rating_$docKey');
+    await _prefs!.remove('note_$docKey');
   }
 
   static Future<ThemeMode> getThemeMode() async {

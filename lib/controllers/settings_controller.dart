@@ -7,6 +7,7 @@ import 'package:mood_memo/services/db.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:launch_review/launch_review.dart';
 
 class SettingsController extends ChangeNotifier {
   DatabaseService db = DatabaseService();
@@ -99,21 +100,6 @@ class SettingsController extends ChangeNotifier {
   }
 
   void rateApp() async {
-    const String appId = 'com.evansmith.mood_memo';
-
-    final uri = Uri(
-      scheme: 'https',
-      host: 'play.google.com',
-      path: 'store/apps/details',
-      queryParameters: <String, String>{
-        'id': appId,
-      },
-    );
-
-    try {
-      await launchUrl(uri);
-    } catch (e) {
-      throw 'Could not launch app store.';
-    }
+    LaunchReview.launch();
   }
 }
