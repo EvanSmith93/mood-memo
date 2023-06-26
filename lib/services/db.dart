@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mood_memo/models/rating.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'date.dart';
 
 class DatabaseService {
   static SharedPreferences? _prefs;
+  static Box? _ratingsBox;
+  static Box? _notesBox;
 
   static Future<void> _initPrefs() async {
     _prefs ??= await SharedPreferences.getInstance();
   }
 
+  static Future<void> _initBox() async {
+    _ratingsBox ??= await Hive.openBox('ratings');
+    _notesBox ??= await Hive.openBox('notes');
+  }
+
   static Future<void> setRating(Rating rating) async {
-    await _initPrefs();
+    await _initBox();
     final docKey = DateService.formatDate(rating.date);
-    await _prefs!.setInt('rating_$docKey', rating.value.number);
-    await _prefs!.setString('note_$docKey', rating.note);
+    await _ratingsBox!.put(docKey, rating.value.number);
+    await _notesBox!.put(docKey, rating.note);
   }
 
   static Future<Rating?> getRatingFromDay(DateTime day) async {
-    await _initPrefs();
+    await _initBox();
     final docKey = DateService.formatDate(day);
-    final value = _prefs!.getInt('rating_$docKey');
-    final note = _prefs!.getString('note_$docKey');
+    final value = _ratingsBox!.get(docKey);
+    final note = _notesBox!.get(docKey);
     if (value != null) {
       return Rating(
         date: day,
@@ -33,11 +41,40 @@ class DatabaseService {
     return null;
   }
 
+  static Future<List<Rating>> getSortedRatings(int from, int to) async {
+    await _initBox();
+    final ratings = <Rating>[];
+    final sortedKeys = _ratingsBox!.keys
+    .where((element) => _notesBox!.get(element) != "")
+    .toList()
+      ..sort((a, b) => b.compareTo(a));
+
+
+    final totalItems = sortedKeys.length;
+    final endIndex = to < totalItems ? to : totalItems;
+
+    for (int i = from; i < endIndex; i++) {
+      final key = sortedKeys[i];
+      final value = _ratingsBox!.get(key);
+      final note = _notesBox!.get(key);
+
+      if (value != null) {
+        ratings.add(Rating(
+          date: DateTime.parse(key),
+          value: RatingValue.values[value],
+          note: note ?? 'error',
+        ));
+      }
+    }
+
+    return ratings;
+  }
+
   static Future<void> deleteRating(String date) async {
-    await _initPrefs();
+    await _initBox();
     final docKey = DateService.formatDate(DateTime.parse(date));
-    await _prefs!.remove('rating_$docKey');
-    await _prefs!.remove('note_$docKey');
+    await _ratingsBox!.delete(docKey);
+    await _notesBox!.delete(docKey);
   }
 
   static Future<ThemeMode> getThemeMode() async {

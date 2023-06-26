@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mood_memo/screens/settings.dart';
 import 'package:mood_memo/widgets/calendar.dart';
+import 'package:mood_memo/screens/list.dart';
 import 'package:mood_memo/widgets/new_rating_popup.dart';
 
 class Home extends StatefulWidget {
@@ -11,13 +12,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // for navigation bar - currently not used
-  /*int _currentIndex = 0;
+  int _currentIndex = 0;
 
   final List<Widget> _children = [
-    const HomePage(),
-    Settings(),
-  ];*/
+    Calendar(),
+    const RatingList(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: Calendar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showRatingPopup(setState, null, null, null);
@@ -49,8 +48,7 @@ class _HomeState extends State<Home> {
         child: const Icon(Icons.add_reaction, color: Colors.white),
       ),
 
-      // navigation bar - currently not used
-      /*body: _children[_currentIndex],
+      body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (int index) {
@@ -60,15 +58,15 @@ class _HomeState extends State<Home> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
+            icon: Icon(Icons.calendar_month_rounded),
             label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.list_rounded),
+            label: 'List',
           ),
         ],
-      ),*/
+      ),
     );
   }
 }

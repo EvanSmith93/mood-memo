@@ -18,4 +18,8 @@ class DateService {
         date1.month == date2.month &&
         date1.day == date2.day;
   }
+
+  static DateTime parseDate(String date) {
+    return DateTime.parse(date);
+  }
 }

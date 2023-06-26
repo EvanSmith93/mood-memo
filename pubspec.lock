@@ -160,6 +160,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  hive:
+    dependency: "direct main"
+    description:
+      name: hive
+      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
+  hive_flutter:
+    dependency: "direct main"
+    description:
+      name: hive_flutter
+      sha256: dca1da446b1d808a51689fb5d0c6c9510c0a2ba01e22805d492c73b68e33eecc
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   http:
     dependency: transitive
     description:
@@ -184,6 +200,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.17"
+  infinite_scroll_pagination:
+    dependency: "direct main"
+    description:
+      name: infinite_scroll_pagination
+      sha256: "9517328f4e373f08f57dbb11c5aac5b05554142024d6b60c903f3b73476d52db"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
   intl:
     dependency: "direct main"
     description:
@@ -280,6 +304,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  path_provider:
+    dependency: "direct main"
+    description:
+      name: path_provider
+      sha256: "3087813781ab814e4157b172f1a11c46be20179fcc9bea043e0fba36bc0acaa2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.15"
+  path_provider_android:
+    dependency: transitive
+    description:
+      name: path_provider_android
+      sha256: "2cec049d282c7f13c594b4a73976b0b4f2d7a1838a6dd5aaf7bd9719196bee86"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.27"
+  path_provider_foundation:
+    dependency: transitive
+    description:
+      name: path_provider_foundation
+      sha256: "1995d88ec2948dac43edf8fe58eb434d35d22a2940ecee1a9fefcd62beee6eb3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
   path_provider_linux:
     dependency: transitive
     description:
@@ -405,6 +453,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sliver_tools:
+    dependency: transitive
+    description:
+      name: sliver_tools
+      sha256: ccdc502098a8bfa07b3ec582c282620031481300035584e1bb3aca296a505e8c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.10"
   source_span:
     dependency: transitive
     description:

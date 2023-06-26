@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mood_memo/screens/splash.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 
