@@ -19,11 +19,12 @@ class _DetailState extends State<Detail> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.rating.getPrettyDate(),
+          widget.rating.getRelativeDate(),
           style: const TextStyle(
             color: Colors.white,
           ),
         ),
+        centerTitle: true,
         backgroundColor: widget.rating.value.color,
         actions: [
           IconButton(
@@ -61,14 +62,18 @@ class _DetailState extends State<Detail> {
                         ],
                       ),
                       const SizedBox(height: 5),
-                      LinearProgressIndicator(
-                        value: widget.rating.value.number / 5,
-                        minHeight: 8,
-                        backgroundColor:
-                            Theme.of(context).brightness == Brightness.light
-                                ? Colors.grey[400]
-                                : Colors.grey[600],
-                        color: widget.rating.value.color,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: LinearProgressIndicator(
+                          value: widget.rating.value.number / 5,
+                          minHeight: 8,
+                          backgroundColor:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Colors.grey[400]
+                                  : Colors.grey[600],
+                          color: widget.rating.value.color,
+                          
+                        ),
                       ),
                     ],
                   ),
@@ -76,32 +81,51 @@ class _DetailState extends State<Detail> {
               ],
             ),
             const SizedBox(height: 20),
-            if (widget.rating.note.isNotEmpty) // Check if the note exists
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Note',
-                    style: TextStyle(
-                        fontSize: 18, color: Theme.of(context).hintColor),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    widget.rating.note,
-                    style: const TextStyle(fontSize: 24),
-                  ),
-                ],
-              ),
-            if (widget
-                .rating.note.isEmpty) // Show "No note" if the note is empty
-              Center(
-                child: Text(
-                  'No note',
-                  style: TextStyle(
-                      fontSize: 18, color: Theme.of(context).hintColor),
+            Visibility(
+              visible: widget.rating.note.isNotEmpty,
+              child: Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Note',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Theme.of(context).hintColor,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: SingleChildScrollView(
+                          child: Text(
+                            widget.rating.note,
+                            style: const TextStyle(fontSize: 24),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            const Spacer(),
+            ),
+           Visibility(
+              visible: widget.rating.note.isEmpty,
+              child: Expanded(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    'No note',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Theme.of(context).hintColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton.icon(
                 onPressed: () {
@@ -114,7 +138,7 @@ class _DetailState extends State<Detail> {
                     backgroundColor: Colors.red,
                     foregroundColor: Colors.white,
                     shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)))),
+                        borderRadius: BorderRadius.all(Radius.circular(5)))),
               ),
             ),
             const SizedBox(height: 12),

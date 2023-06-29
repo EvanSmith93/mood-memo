@@ -32,8 +32,9 @@ class _CalendarBoxState extends State<CalendarBox> {
                             : Colors.grey[800],
                 border: Border.all(
                   color: Theme.of(context).scaffoldBackgroundColor,
-                  width: 0.6
-                )
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(3),
               ),
             child: Container(
               decoration: BoxDecoration(
@@ -42,8 +43,9 @@ class _CalendarBoxState extends State<CalendarBox> {
                             widget.details.date, DateTime.now()) && !snapshot.hasData
                         ? Theme.of(context).colorScheme.primary
                         : Colors.transparent,
-                    width: 1.8
-              ),
+                    width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(3),
               ),
               child: Center(
                 child: Text(

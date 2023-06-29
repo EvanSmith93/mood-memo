@@ -9,6 +9,7 @@ class DatabaseService {
   static SharedPreferences? _prefs;
   static Box? _ratingsBox;
   static Box? _notesBox;
+  static List<dynamic> sortedKeys = [];
 
   static Future<void> _initPrefs() async {
     _prefs ??= await SharedPreferences.getInstance();
@@ -44,16 +45,15 @@ class DatabaseService {
   static Future<List<Rating>> getSortedRatings(int from, int to) async {
     await _initBox();
     final ratings = <Rating>[];
-    final sortedKeys = _ratingsBox!.keys
-    .where((element) => _notesBox!.get(element) != "")
-    .toList()
-      ..sort((a, b) => b.compareTo(a));
 
+    // possibly add a filter option for the user to filter out empty notes
+    if (from == 0) {
+      sortedKeys = _ratingsBox!.keys //.where((element) => _notesBox!.get(element) != "")
+        .toList()
+        ..sort((a, b) => b.compareTo(a));
+    }
 
-    final totalItems = sortedKeys.length;
-    final endIndex = to < totalItems ? to : totalItems;
-
-    for (int i = from; i < endIndex; i++) {
+    for (int i = from; i < to && i < sortedKeys.length; i++) {
       final key = sortedKeys[i];
       final value = _ratingsBox!.get(key);
       final note = _notesBox!.get(key);

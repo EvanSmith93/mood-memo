@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:mood_memo/screens/splash.dart';
+import 'package:mood_memo/screens/home.dart';
+//import 'package:mood_memo/screens/splash.dart';;
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -43,9 +45,37 @@ class _MyAppState extends State<MyApp> {
                 titleTextStyle: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                 ),
               ),
+              textTheme: Theme.of(context).textTheme.apply(
+                fontFamily: "Poppins",
+              ),
+              /*dataTableTheme: Theme.of(context).dataTableTheme.copyWith(
+                    headingTextStyle: const TextStyle(
+                      fontFamily: "DancingScript",
+                      fontWeight: FontWeight.w600,
+                    ),
+                    dataTextStyle: const TextStyle(
+                      fontFamily: "DancingScript",
+                    ),
+              ),*/
+              /*cupertinoOverrideTheme: const CupertinoThemeData(
+                primaryColor: Colors.blue,
+                brightness: Brightness.light,
+                
+                textTheme: CupertinoTextThemeData(
+                  pickerTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontFamily: "DancingScript",
+                  ),
+                  dateTimePickerTextStyle: TextStyle(
+                    color: Colors.black,
+                    fontFamily: "DancingScript",
+                  ),
+                ),
+              ),*/
             ),
             darkTheme: ThemeData.dark().copyWith(
               colorScheme: const ColorScheme.dark(
@@ -59,12 +89,17 @@ class _MyAppState extends State<MyApp> {
                 titleTextStyle: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                 ),
               ),
+              textTheme: Theme.of(context).textTheme.apply(
+                fontFamily: "Poppins",
+                bodyColor: Colors.white,
+              ),
             ),
 
-            home: const Splash(),
+            home: const Home(),
           );
         });
   }

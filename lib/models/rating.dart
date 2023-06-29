@@ -89,7 +89,7 @@ class Rating {
     return DateService.formatDate(date);
   }
 
-  String getPrettyDate() {
-    return DateService.prettyFormatDate(date);
+  String getRelativeDate() {
+    return DateService.formatRelativeDate(date);
   }
 }

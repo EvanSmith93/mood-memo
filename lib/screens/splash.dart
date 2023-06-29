@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:mood_memo/controllers/settings_controller.dart';
 import 'package:mood_memo/screens/home.dart';
 
@@ -31,3 +31,4 @@ class _SplashState extends State<Splash> {
     return shouldProceed ? const Home() : const SizedBox.shrink();
   }
 }
+*/

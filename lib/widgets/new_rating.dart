@@ -47,7 +47,7 @@ class _NewRatingState extends State<NewRating> {
                 color: Colors.white,
                 selectedColor: Colors.white,
                 //selectedColor: Theme.of(context).textTheme.bodyMedium?.color,
-                borderRadius: const BorderRadius.all(Radius.circular(7)),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
                 children: [
                   ColorBox(
                       value: RatingValue.one, controller: widget.controller),
@@ -83,13 +83,20 @@ class _NewRatingState extends State<NewRating> {
               padding: const EdgeInsets.all(12.0),
               child: SizedBox(
                 height: 130,
-                child: CupertinoDatePicker(
-                  mode: CupertinoDatePickerMode.date,
-                  initialDateTime: widget.controller.getDate(),
-                  maximumDate: DateTime.now(),
-                  onDateTimeChanged: (DateTime newDate) {
-                    widget.controller.setDate(newDate);
-                  },
+                child: CupertinoTheme(
+                  data: CupertinoThemeData(
+                    textTheme: CupertinoTextThemeData(
+                      dateTimePickerTextStyle: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ),
+                  child: CupertinoDatePicker(
+                    mode: CupertinoDatePickerMode.date,
+                    initialDateTime: widget.controller.getDate(),
+                    maximumDate: DateTime.now(),
+                    onDateTimeChanged: (DateTime newDate) {
+                      widget.controller.setDate(newDate);
+                    },
+                  ),
                 ),
               ),
             ),

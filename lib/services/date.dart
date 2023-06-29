@@ -7,8 +7,23 @@ class DateService {
     return formattedDate;
   }
 
-  static String prettyFormatDate(DateTime date) {
-    final DateFormat formatter = DateFormat('EEEE, MMMM d, yyyy');
+  static String formatRelativeDate(DateTime date) {
+    final DateFormat formatter;
+
+    if (date.year == DateTime.now().year && date.month == DateTime.now().month) {
+      if (date.day == DateTime.now().day) {
+        return 'Today';
+      } else if (date.day == DateTime.now().day - 1) {
+        return 'Yesterday';
+      }
+    }
+
+    if (date.year == DateTime.now().year) {
+      formatter = DateFormat('EEE, MMMM d');
+    } else {
+      formatter = DateFormat('EEE, MMMM d, yyyy');
+    }
+
     String formattedDate = formatter.format(date);
     return formattedDate;
   }

@@ -8,7 +8,9 @@ import 'package:mood_memo/services/db.dart';
 class RatingListController {
   PagingController<int, Rating> pagingController =
       PagingController(firstPageKey: 0);
-  int pageSize = 5;
+  final int pageSize = 10;
+
+  bool stopSecondFetch = false;
 
   void fetchRatings(int pageKey) {
     DatabaseService.getSortedRatings(

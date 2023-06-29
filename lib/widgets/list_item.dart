@@ -19,9 +19,9 @@ class _ListItemState extends State<ListItem> {
         children: [
           Container(
             height: double.infinity,
-            width: 10,
+            width: 8,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(4),
               color: widget.rating.value.color,
             ),
           ),
@@ -31,7 +31,7 @@ class _ListItemState extends State<ListItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.rating.getPrettyDate(),
+                  widget.rating.getRelativeDate(),
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 10),
@@ -43,13 +43,14 @@ class _ListItemState extends State<ListItem> {
                     : Text(
                         "No note",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           color: Theme.of(context).hintColor,
                         ),
                       ),
               ],
             ),
           ),
+          const SizedBox(width: 10),
           const Icon(Icons.arrow_forward),
         ],
       ),

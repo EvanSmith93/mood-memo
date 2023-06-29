@@ -5,20 +5,20 @@ import 'package:mood_memo/models/rating.dart';
 import 'package:mood_memo/widgets/list_item.dart';
 
 class RatingList extends StatefulWidget {
-  const RatingList({super.key});
+  final RatingListController controller;
+  const RatingList({super.key, required this.controller});
 
   @override
   State<RatingList> createState() => _RatingListState();
 }
 
 class _RatingListState extends State<RatingList> {
-  RatingListController controller = RatingListController();
 
   @override
   void initState() {
     super.initState();
-    controller.pagingController.addPageRequestListener((pageKey) {
-      controller.fetchRatings(pageKey);
+    widget.controller.pagingController.addPageRequestListener((pageKey) {
+      widget.controller.fetchRatings(pageKey);
     });
   }
 
@@ -26,11 +26,11 @@ class _RatingListState extends State<RatingList> {
   Widget build(BuildContext context) {
     return PagedListView<int, Rating>.separated(
       separatorBuilder: (context, index) => const Divider(),
-      pagingController: controller.pagingController,
+      pagingController: widget.controller.pagingController,
       builderDelegate: PagedChildBuilderDelegate<Rating>(
           itemBuilder: (context, item, index) => ListTile(
-                title: ListItem(rating: item, controller: controller),
-                onTap: () => controller.onTap(item),
+                title: ListItem(rating: item, controller: widget.controller),
+                onTap: () => widget.controller.onTap(item),
               ),
       ),
     );
