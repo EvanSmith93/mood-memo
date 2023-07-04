@@ -10,12 +10,15 @@ class DateService {
   static String formatRelativeDate(DateTime date) {
     final DateFormat formatter;
 
-    if (date.year == DateTime.now().year && date.month == DateTime.now().month) {
-      if (date.day == DateTime.now().day) {
-        return 'Today';
-      } else if (date.day == DateTime.now().day - 1) {
-        return 'Yesterday';
-      }
+    // Use the difference method to get the duration between date and now
+    Duration diff = date.difference(DateTime.now());
+    // Convert the duration to days and round it to the nearest integer
+    int days = diff.inDays.round();
+    // Check the value of days and return the appropriate string
+    if (days == 0) {
+      return 'Today';
+    } else if (days == -1) {
+      return 'Yesterday';
     }
 
     if (date.year == DateTime.now().year) {
