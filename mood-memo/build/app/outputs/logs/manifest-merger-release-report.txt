@@ -1,0 +1,186 @@
+-- Merging decision tree log ---
+application
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:3:4-34:19
+MERGED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-14:19
+MERGED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-14:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.core:core:1.6.0] /Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] /Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/evansmith/.gradle/caches/transforms-3/16d334c486cbdec77958d3d22ef782e4/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/evansmith/.gradle/caches/transforms-3/16d334c486cbdec77958d3d22ef782e4/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] /Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:4:9-34
+	android:icon
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:6:9-43
+	android:name
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:5:9-42
+manifest
+ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+MERGED from [:shared_preferences_android] /Users/evansmith/Desktop/mood-memo/build/shared_preferences_android/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:package_info_plus] /Users/evansmith/Desktop/mood-memo/build/package_info_plus/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-16:12
+MERGED from [:device_info_plus] /Users/evansmith/Desktop/mood-memo/build/device_info_plus/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:path_provider_android] /Users/evansmith/Desktop/mood-memo/build/path_provider_android/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:launch_review] /Users/evansmith/Desktop/mood-memo/build/launch_review/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/evansmith/.gradle/caches/transforms-3/2a2bab6dfddf4d0fc63f631a95388563/transformed/multidex-2.0.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/21b26ef90e71324700151bde7e8603b7/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/evansmith/.gradle/caches/transforms-3/5131069a74de4699d8095baf873b54b9/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/ba6d04d58a10f2c6173835a799a8b5ff/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/c6d11f52e4e8081f9a64e739aa1dac6d/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/c4248e0c6a7af08c45a5561bab54f521/transformed/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/1ec724f0c82c66d5a38599bb5375d747/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.6.0] /Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/evansmith/.gradle/caches/transforms-3/1a022a6c191e5cda22847650232353f8/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/120453716371826550a03abd10e878c7/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/8eb26f0aa86cc48c11242d7a197c2cab/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/bc3a9a67b8aecd29439312d810d3ba60/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/2d02471870aa316b096e6926a6a97b8f/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/a99786fe7a03c7a48497ad344868eff5/transformed/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/evansmith/.gradle/caches/transforms-3/16d334c486cbdec77958d3d22ef782e4/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/evansmith/.gradle/caches/transforms-3/bb86a14d026a27f02ef3281a7e476e26/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/evansmith/.gradle/caches/transforms-3/7b0449fa7552e8a8a339afd91dd38861/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+	package
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:2:5-36
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:1-35:12
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-sdk
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+MERGED from [:shared_preferences_android] /Users/evansmith/Desktop/mood-memo/build/shared_preferences_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] /Users/evansmith/Desktop/mood-memo/build/shared_preferences_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:package_info_plus] /Users/evansmith/Desktop/mood-memo/build/package_info_plus/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:package_info_plus] /Users/evansmith/Desktop/mood-memo/build/package_info_plus/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:device_info_plus] /Users/evansmith/Desktop/mood-memo/build/device_info_plus/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:device_info_plus] /Users/evansmith/Desktop/mood-memo/build/device_info_plus/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/evansmith/Desktop/mood-memo/build/path_provider_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/evansmith/Desktop/mood-memo/build/path_provider_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:launch_review] /Users/evansmith/Desktop/mood-memo/build/launch_review/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:launch_review] /Users/evansmith/Desktop/mood-memo/build/launch_review/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/evansmith/.gradle/caches/transforms-3/2a2bab6dfddf4d0fc63f631a95388563/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] /Users/evansmith/.gradle/caches/transforms-3/2a2bab6dfddf4d0fc63f631a95388563/transformed/multidex-2.0.1/AndroidManifest.xml:20:5-43
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/21b26ef90e71324700151bde7e8603b7/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/21b26ef90e71324700151bde7e8603b7/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/evansmith/.gradle/caches/transforms-3/5131069a74de4699d8095baf873b54b9/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/evansmith/.gradle/caches/transforms-3/5131069a74de4699d8095baf873b54b9/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/ba6d04d58a10f2c6173835a799a8b5ff/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/ba6d04d58a10f2c6173835a799a8b5ff/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/c6d11f52e4e8081f9a64e739aa1dac6d/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/c6d11f52e4e8081f9a64e739aa1dac6d/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/c4248e0c6a7af08c45a5561bab54f521/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/c4248e0c6a7af08c45a5561bab54f521/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/1ec724f0c82c66d5a38599bb5375d747/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/1ec724f0c82c66d5a38599bb5375d747/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.6.0] /Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/evansmith/.gradle/caches/transforms-3/1a022a6c191e5cda22847650232353f8/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/evansmith/.gradle/caches/transforms-3/1a022a6c191e5cda22847650232353f8/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/120453716371826550a03abd10e878c7/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/120453716371826550a03abd10e878c7/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/8eb26f0aa86cc48c11242d7a197c2cab/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/8eb26f0aa86cc48c11242d7a197c2cab/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/bc3a9a67b8aecd29439312d810d3ba60/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/bc3a9a67b8aecd29439312d810d3ba60/transformed/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/2d02471870aa316b096e6926a6a97b8f/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/evansmith/.gradle/caches/transforms-3/2d02471870aa316b096e6926a6a97b8f/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/a99786fe7a03c7a48497ad344868eff5/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/evansmith/.gradle/caches/transforms-3/a99786fe7a03c7a48497ad344868eff5/transformed/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/evansmith/.gradle/caches/transforms-3/16d334c486cbdec77958d3d22ef782e4/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/evansmith/.gradle/caches/transforms-3/16d334c486cbdec77958d3d22ef782e4/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/evansmith/.gradle/caches/transforms-3/bb86a14d026a27f02ef3281a7e476e26/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/evansmith/.gradle/caches/transforms-3/bb86a14d026a27f02ef3281a7e476e26/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/evansmith/.gradle/caches/transforms-3/7b0449fa7552e8a8a339afd91dd38861/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/evansmith/.gradle/caches/transforms-3/7b0449fa7552e8a8a339afd91dd38861/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml
+activity#com.example.mood_memo.MainActivity
+ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:8:9-28:20
+	android:launchMode
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:11:13-43
+	android:hardwareAccelerated
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:14:13-47
+	android:windowSoftInputMode
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:15:13-55
+	android:exported
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:10:13-36
+	android:configChanges
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:13:13-163
+	android:theme
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:12:13-47
+	android:name
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:9:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:20:13-23:17
+	android:resource
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:22:15-52
+	android:name
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:21:15-70
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:24:13-27:29
+action#android.intent.action.MAIN
+ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:25:17-68
+	android:name
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:25:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:26:17-76
+	android:name
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:26:27-74
+meta-data#flutterEmbedding
+ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:31:9-33:33
+	android:value
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:33:13-30
+	android:name
+		ADDED from /Users/evansmith/Desktop/mood-memo/android/app/src/main/AndroidManifest.xml:32:13-44
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-13:74
+	android:exported
+		ADDED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-37
+	android:theme
+		ADDED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-71
+	android:name
+		ADDED from [:url_launcher_android] /Users/evansmith/Desktop/mood-memo/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-74
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/evansmith/.gradle/caches/transforms-3/e1f53c96aa78f7b42431169b7cd59214/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
