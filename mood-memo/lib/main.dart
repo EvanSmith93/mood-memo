@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mood_memo/screens/home.dart';
@@ -52,30 +51,6 @@ class _MyAppState extends State<MyApp> {
               textTheme: Theme.of(context).textTheme.apply(
                 fontFamily: "Poppins",
               ),
-              /*dataTableTheme: Theme.of(context).dataTableTheme.copyWith(
-                    headingTextStyle: const TextStyle(
-                      fontFamily: "DancingScript",
-                      fontWeight: FontWeight.w600,
-                    ),
-                    dataTextStyle: const TextStyle(
-                      fontFamily: "DancingScript",
-                    ),
-              ),*/
-              /*cupertinoOverrideTheme: const CupertinoThemeData(
-                primaryColor: Colors.blue,
-                brightness: Brightness.light,
-                
-                textTheme: CupertinoTextThemeData(
-                  pickerTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontFamily: "DancingScript",
-                  ),
-                  dateTimePickerTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontFamily: "DancingScript",
-                  ),
-                ),
-              ),*/
             ),
             darkTheme: ThemeData.dark().copyWith(
               colorScheme: const ColorScheme.dark(

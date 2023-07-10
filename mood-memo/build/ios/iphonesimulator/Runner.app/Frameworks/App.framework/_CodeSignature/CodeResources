@@ -8,41 +8,21 @@
 		<data>
 		85iaADE5tc/NukRC+KGdiZaZ0ZA=
 		</data>
+		<key>flutter_assets/AssetManifest.bin</key>
+		<data>
+		53TKJIYRdMNlQAXJkmbvdfudYrQ=
+		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		Mxk6jrlDQqOjwUgum6ef2FJmL9Y=
-		</data>
-		<key>flutter_assets/AssetManifest.smcbin</key>
-		<data>
-		v+GtmkBRb0IPLaL49StC4JdXgKA=
+		DSMGG414l/xIO+uxrRnACj3aTOM=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
-		qDnfkmARpR2PmQ66ylK4E3cazRI=
+		mm6XuBtKYgelVBAqYk6f97Xl4tk=
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
 		8cQ4V6383BDNmFOIz8/BinWvyxg=
-		</data>
-		<key>flutter_assets/assets/DancingScript-VariableFont_wght.ttf</key>
-		<data>
-		9u8WQVlEMOg2fZwmgZqQDIebjzU=
-		</data>
-		<key>flutter_assets/assets/Poppins-Bold.ttf</key>
-		<data>
-		h1zwzs1ke88i551jPYaMGx7Jjfo=
-		</data>
-		<key>flutter_assets/assets/Poppins-Italic.ttf</key>
-		<data>
-		4r/NVgFsPJFSIe8cX8Ghewd265E=
-		</data>
-		<key>flutter_assets/assets/Poppins-Light.ttf</key>
-		<data>
-		4kepIVjhEvi/e2OMjZU4HWawDbs=
-		</data>
-		<key>flutter_assets/assets/Poppins-Medium.ttf</key>
-		<data>
-		KD8htE772/J2uoAr4tlJo2u8QjM=
 		</data>
 		<key>flutter_assets/assets/Poppins-Regular.ttf</key>
 		<data>
@@ -54,11 +34,11 @@
 		</data>
 		<key>flutter_assets/isolate_snapshot_data</key>
 		<data>
-		G7f+W7DM6WgAF6e4R0YmmZObSn4=
+		dRka9t86+Ik10kMCLsudB3ofChY=
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		kNWv4+5iDyyvMHKegiOTmzXY3cA=
+		e1TyQcfp7aHDzD9qVlOitUB5lTg=
 		</data>
 		<key>flutter_assets/packages/timezone/data/latest_all.tzf</key>
 		<data>
@@ -70,30 +50,30 @@
 		</data>
 		<key>flutter_assets/vm_snapshot_data</key>
 		<data>
-		GIVOmCdKRJPjhwyeBDaqRSmW/rc=
+		wVCDsOQlJhUyvrMuhaM3MeqUNWk=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>flutter_assets/AssetManifest.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FONa0sTs/Fy97q3ezB4tZv0O1c1Ocna7zRgnHzPNAdQ=
+			</data>
+		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GRmzelpufKYzne7Xaw6IkWyVeXzJcdxUXcHO8G2srI0=
-			</data>
-		</dict>
-		<key>flutter_assets/AssetManifest.smcbin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			G+VWZoDaTl99GWUsXZaE/otMUNUt78dTpUwPuEpr69k=
+			1cRXj3haXireZCYEiDwQhnEGmTxYzrb5AckVbC9mEFc=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PPGQyUuDCReF32suLnsQRMEcv4TE35FMzXoIonjY458=
+			mZHmJ8f/0LYexHBcw0EOUWul/JFbr1t3DRo/iigRVC4=
 			</data>
 		</dict>
 		<key>flutter_assets/NOTICES.Z</key>
@@ -101,41 +81,6 @@
 			<key>hash2</key>
 			<data>
 			JaGLfKR6JQHp805K/60xxTMmgyL4/RLDF4/vKTQ3m3U=
-			</data>
-		</dict>
-		<key>flutter_assets/assets/DancingScript-VariableFont_wght.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			sq3sKlvYkmLFdbPkBQgWEybQBoIxJliVUBCTalruz9c=
-			</data>
-		</dict>
-		<key>flutter_assets/assets/Poppins-Bold.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			chlUfuJTNMusD+SzrPC/Yx5I67YixxrwOO2qplLGCHU=
-			</data>
-		</dict>
-		<key>flutter_assets/assets/Poppins-Italic.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MiXOxqAYMQSX6p7hFqpDsqgzRk/tYVbc65o6RCS7hhM=
-			</data>
-		</dict>
-		<key>flutter_assets/assets/Poppins-Light.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ZH8BTTaCLvfgQT/7tlWYrgy1f7eY5jXGORLJPZTrNWo=
-			</data>
-		</dict>
-		<key>flutter_assets/assets/Poppins-Medium.ttf</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			jZCYg96BNE4PvP7zDpMYcuktmu7N+Fttz24LKMB46Y4=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/Poppins-Regular.ttf</key>
@@ -156,14 +101,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			a0WltY9enMx/xAaluQU9u54Z/KOGA8WPZlZ1IIuzDMM=
+			Pdp3wvU0CLVp+3Afd6I6QxM36Oe5dQcuavhGP5QJ6Ec=
 			</data>
 		</dict>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p88otKBCvus2O1qwPZGjvUpFFUmV6/XsHRFLG0byUgw=
+			kwXgNbPm+Zrt3NSsSBbmqS52VIVzRVaBQbGsd5sPaeE=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/timezone/data/latest_all.tzf</key>
@@ -184,7 +129,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			K4h+E8VrnmlmBepiVsQbyWlUOtVSA/UGiqBRPbjQJ+8=
+			pKvVVo/CPIJFzUPS2fhLuWOuiKFXCBKbw9g8gmDjVXE=
 			</data>
 		</dict>
 	</dict>

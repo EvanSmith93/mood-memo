@@ -1,8 +1,44 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/evansmith/Desktop/mood-memo/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/evansmith/Desktop/mood memo/mood-memo/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
+                {
+                    "source": "/Users/evansmith/Desktop/mood memo/mood-memo/build/app/generated/res/google-services/debug/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,281,385,494,614,713",
+                        "endColumns": "143,81,103,108,119,98,75",
+                        "endOffsets": "194,276,380,489,609,708,784"
+                    },
+                    "to": {
+                        "startLines": "92,93,94,95,96,97,98",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "5391,5535,5617,5721,5830,5950,6049",
+                        "endColumns": "143,81,103,108,119,98,75",
+                        "endOffsets": "5530,5612,5716,5825,5945,6044,6120"
+                    }
+                },
+                {
+                    "source": "/Users/evansmith/Desktop/mood memo/mood-memo/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
+                    },
+                    "to": {
+                        "startLines": "100,105",
+                        "startColumns": "4,4",
+                        "startOffsets": "6196,6504",
+                        "endLines": "104,107",
+                        "endColumns": "12,12",
+                        "endOffsets": "6499,6668"
+                    }
+                },
                 {
                     "source": "/Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/values/values.xml",
                     "from": {
@@ -39,42 +75,6 @@
                         "endLines": "7,8,9,10,72,128,132,281,298,306",
                         "endColumns": "11,59,51,44,59,24,24,24,24,24",
                         "endOffsets": "289,349,401,446,4387,7983,8180,17141,18255,18648"
-                    }
-                },
-                {
-                    "source": "/Users/evansmith/Desktop/mood-memo/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "100,105",
-                        "startColumns": "4,4",
-                        "startOffsets": "6196,6504",
-                        "endLines": "104,107",
-                        "endColumns": "12,12",
-                        "endOffsets": "6499,6668"
-                    }
-                },
-                {
-                    "source": "/Users/evansmith/Desktop/mood-memo/build/app/generated/res/google-services/debug/values/values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,281,385,494,614,713",
-                        "endColumns": "143,81,103,108,119,98,75",
-                        "endOffsets": "194,276,380,489,609,708,784"
-                    },
-                    "to": {
-                        "startLines": "92,93,94,95,96,97,98",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "5391,5535,5617,5721,5830,5950,6049",
-                        "endColumns": "143,81,103,108,119,98,75",
-                        "endOffsets": "5530,5612,5716,5825,5945,6044,6120"
                     }
                 }
             ]

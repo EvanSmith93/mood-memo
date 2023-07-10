@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mood_memo/main.dart';
@@ -101,5 +100,14 @@ class SettingsController extends ChangeNotifier {
 
   void rateApp() async {
     LaunchReview.launch();
+  }
+
+  void privacyPolicy() async {
+    final uri = Uri.parse('https://www.termsfeed.com/live/f69cb1e6-92a7-420a-a9d6-539cd7eadc4b');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch url.';
+    }
   }
 }

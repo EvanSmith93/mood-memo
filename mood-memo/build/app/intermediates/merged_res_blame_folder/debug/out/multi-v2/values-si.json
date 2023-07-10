@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/evansmith/Desktop/mood-memo/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-si/values-si.xml",
+            "outputFile": "/Users/evansmith/Desktop/mood memo/mood-memo/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-si/values-si.xml",
             "map": [
                 {
                     "source": "/Users/evansmith/.gradle/caches/transforms-3/b11c0e2c212c747cb4bcf29314469768/transformed/core-1.6.0/res/values-si/values-si.xml",

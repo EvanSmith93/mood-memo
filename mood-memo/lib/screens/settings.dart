@@ -72,6 +72,14 @@ class _SettingsState extends State<Settings> {
               widget.controller.rateApp();
             },
           ),
+          // privacy policy button -> opens browser
+          ListTile(
+            title: const Text('Privacy Policy'),
+            trailing: const Icon(Icons.arrow_forward),
+            onTap: () {
+              widget.controller.privacyPolicy();
+            },
+          ),
         ],
       ),
     );
