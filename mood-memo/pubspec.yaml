@@ -99,6 +99,7 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/Poppins-Regular.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
