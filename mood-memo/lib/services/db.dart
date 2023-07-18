@@ -72,7 +72,6 @@ class DatabaseService {
   }
 
   static Future<void> deleteRating(DateTime date) async {
-    print('deleting rating');
     await _initBox();
     final docKey = DateService.formatDate(date);
     await _ratingsBox!.delete(docKey);

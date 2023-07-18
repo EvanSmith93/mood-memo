@@ -31,6 +31,7 @@ attr splitRatio
 attr ttcIndex
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
+color ic_launcher_background
 color notification_action_color_filter
 color notification_icon_bg_color
 dimen compat_button_inset_horizontal_material
@@ -153,6 +154,8 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 string default_web_client_id
 string gcm_defaultSenderId
 string google_api_key
