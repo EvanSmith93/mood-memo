@@ -48,9 +48,10 @@ class DatabaseService {
 
     // possibly add a filter option for the user to filter out empty notes
     if (from == 0) {
-      sortedKeys = _ratingsBox!.keys //.where((element) => _notesBox!.get(element) != "")
-        .toList()
-        ..sort((a, b) => b.compareTo(a));
+      sortedKeys =
+          _ratingsBox!.keys //.where((element) => _notesBox!.get(element) != "")
+              .toList()
+            ..sort((a, b) => b.compareTo(a));
     }
 
     for (int i = from; i < to && i < sortedKeys.length; i++) {
@@ -70,9 +71,10 @@ class DatabaseService {
     return ratings;
   }
 
-  static Future<void> deleteRating(String date) async {
+  static Future<void> deleteRating(DateTime date) async {
+    print('deleting rating');
     await _initBox();
-    final docKey = DateService.formatDate(DateTime.parse(date));
+    final docKey = DateService.formatDate(date);
     await _ratingsBox!.delete(docKey);
     await _notesBox!.delete(docKey);
   }

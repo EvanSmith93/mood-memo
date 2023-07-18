@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mood_memo/main.dart';
 import 'package:mood_memo/models/rating.dart';
-import 'package:mood_memo/services/date.dart';
 import 'package:mood_memo/services/db.dart';
 import 'package:mood_memo/widgets/new_rating_popup.dart';
 
@@ -39,9 +38,9 @@ class NewRatingController {
     selectedDate = date;
   }
 
-  Future<void> updateRating(String initDate) async {
-    await DatabaseService.deleteRating(initDate);
-    
+  Future<void> updateRating(DateTime? initDate) async {
+    if (initDate != null && initDate != getDate()) DatabaseService.deleteRating(initDate);
+
     Rating rating = Rating(
         date: selectedDate,
         value: RatingValue.values[getValue()],
@@ -75,14 +74,14 @@ class NewRatingController {
             ));
   }
 
-  Future<void> saveRating(DateTime? date, Function refresher) async {
+  Future<void> saveRating(DateTime? initDate, Function refresher) async {
     void saveRating() async {
-      await updateRating(DateService.formatDate(date ?? DateTime.now()));
+      await updateRating(initDate);
       Navigator.pop(navigatorKey.currentContext!);
       refresher(() {});
     }
 
-    if (date != getDate() &&
+    if (initDate != getDate() &&
         await DatabaseService.getRatingFromDay(getDate()) != null) {
       showDialog(
           context: navigatorKey.currentContext!,

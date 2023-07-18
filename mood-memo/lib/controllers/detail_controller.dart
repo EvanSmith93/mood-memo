@@ -8,7 +8,7 @@ class DetailPageController {
     showRatingPopup(refresher, rating.date, rating.value, rating.note);
   }
 
-  void deleteRating(String date, Function refresher) async {
+  void deleteRating(DateTime date, Function refresher) async {
     DatabaseService.deleteRating(date);
     refresher(() {});
   }
@@ -30,7 +30,7 @@ class DetailPageController {
               TextButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    deleteRating(rating.getDate(), refresher);
+                    deleteRating(rating.date, refresher);
                     Navigator.pop(context);
                   },
                   child: const Text("Delete")),

@@ -103,7 +103,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   void privacyPolicy() async {
-    final uri = Uri.parse('https://www.termsfeed.com/live/f69cb1e6-92a7-420a-a9d6-539cd7eadc4b');
+    final uri = Uri.parse('https://evansmith93.github.io/mood-memo-site/#/privacy');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     } else {
