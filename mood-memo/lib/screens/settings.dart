@@ -86,7 +86,6 @@ class _SettingsState extends State<Settings> {
               ),
             ],
           ),
-          const SizedBox(height: 25),
           // send feedback button -> opens email app
           ListTile(
             title: const Text('Send Feedback'),

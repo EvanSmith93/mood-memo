@@ -1,6 +1,0 @@
-framework module launch_review {
-  umbrella header "launch_review-umbrella.h"
-
-  export *
-  module * { export * }
-}

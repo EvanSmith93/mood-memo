@@ -1,4 +1,0 @@
--keep class androidx.core.app.CoreComponentFactory { <init>(); }
--keep class com.example.mood_memo.MainActivity { <init>(); }
--keep class io.flutter.app.FlutterMultiDexApplication { <init>(); }
--keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }

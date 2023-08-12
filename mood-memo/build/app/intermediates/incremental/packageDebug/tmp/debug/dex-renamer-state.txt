@@ -1,7 +1,0 @@
-#Tue Jul 18 04:07:36 EDT 2023
-base.0=/Users/evansmith/Desktop/mood memo/mood-memo/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-base.1=/Users/evansmith/Desktop/mood memo/mood-memo/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
-path.0=classes.dex
-path.1=classes2.dex
-renamed.0=classes.dex
-renamed.1=classes2.dex

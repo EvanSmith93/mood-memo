@@ -14,8 +14,6 @@ class SettingsController extends ChangeNotifier {
   static bool reminderEnabled = false;
   static TimeOfDay reminderTime = const TimeOfDay(hour: 19, minute: 0);
 
-  static ThemeMode theme = DatabaseService.getThemeMode();
-
   /// Returns whether the reminder is enabled.
   static void setReminderEnabled(bool value) {
     reminderEnabled = value;
@@ -43,9 +41,11 @@ class SettingsController extends ChangeNotifier {
     return reminderTime;
   }
 
+  static ThemeMode get theme => DatabaseService.getThemeMode();
+
   /// Returns the name of the current theme.
   String get themeName {
-    switch (theme) {
+    switch (DatabaseService.getThemeMode()) {
       case ThemeMode.system:
         return 'System Default';
       case ThemeMode.light:
@@ -60,7 +60,6 @@ class SettingsController extends ChangeNotifier {
   /// Sets the theme of the app.
   static void setTheme(ThemeMode mode) {
     MyApp.themeMode.value = mode;
-    theme = mode;
     DatabaseService.setThemeMode(mode);
   }
 

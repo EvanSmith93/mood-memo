@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 
   static final ValueNotifier<ThemeMode> themeMode =
-      ValueNotifier(ThemeMode.system);
+      ValueNotifier(DatabaseService.getThemeMode());
 }
 
 class _MyAppState extends State<MyApp> {
