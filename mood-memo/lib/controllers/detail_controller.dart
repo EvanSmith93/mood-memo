@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:mood_memo/models/rating.dart';
 import 'package:mood_memo/services/db.dart';
-import 'package:mood_memo/widgets/new_rating_popup.dart';
+import 'package:mood_memo/screens/edit.dart';
 
 class DetailPageController {
   void editRating(Function refresher, Rating rating) {
-    showRatingPopup(refresher, rating.date, rating.value, rating.note);
+    showEditPopup(refresher, rating.date, rating.value, rating.note);
   }
 
-  void deleteRating(DateTime date, Function refresher) async {
+  void deleteRating(DateTime date, Function refresher) {
     DatabaseService.deleteRating(date);
     refresher(() {});
   }
 
-  Future<void> showDeleteAlert(
-      BuildContext context, Function refresher, Rating rating) async {
+  void showDeleteAlert(
+      BuildContext context, Function refresher, Rating rating) {
     showDialog(
         context: context,
         builder: (BuildContext context) {

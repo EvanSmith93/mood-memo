@@ -3,9 +3,9 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:mood_memo/controllers/list_controller.dart';
 import 'package:mood_memo/models/rating.dart';
 import 'package:mood_memo/screens/settings.dart';
-import 'package:mood_memo/widgets/calendar.dart';
+import 'package:mood_memo/widgets/calendar/calendar.dart';
 import 'package:mood_memo/screens/list.dart';
-import 'package:mood_memo/widgets/new_rating_popup.dart';
+import 'package:mood_memo/screens/edit.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,6 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+  // move this to a seperate file
   RatingListController controller = RatingListController();
 
   @override
@@ -47,7 +48,7 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showRatingPopup((_) {
+          showEditPopup((_) {
             setState(() {
               if (_currentIndex == 1) {
                 controller.pagingController.refresh();

@@ -4,13 +4,13 @@ import 'package:mood_memo/models/rating.dart';
 import 'package:mood_memo/screens/detail.dart';
 import 'package:mood_memo/services/db.dart';
 
-import '../widgets/new_rating_popup.dart';
+import '../screens/edit.dart';
 
 class ColorGridController {
   Map<String, Rating> days = {};
 
-  Future<Rating?> getRating(DateTime date) async {
-    Rating? rating = await DatabaseService.getRatingFromDay(date);
+  Rating? getRating(DateTime date) {
+    Rating? rating = DatabaseService.getRatingFromDay(date);
 
     if (rating != null) {
       days[date.toString()] = rating;
@@ -28,11 +28,11 @@ class ColorGridController {
       Navigator.push(
         navigatorKey.currentContext!,
         MaterialPageRoute(
-            builder: (context) => Detail(
-                rating: days[date.toString()]!, refresher: refresher)),
+            builder: (context) =>
+                Detail(rating: days[date.toString()]!, refresher: refresher)),
       );
     } else {
-      showRatingPopup(refresher, date, null, null);
+      showEditPopup(refresher, date, null, null);
     }
   }
 }
