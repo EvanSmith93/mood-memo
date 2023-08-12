@@ -10,16 +10,12 @@ class RatingListController {
       PagingController(firstPageKey: 0);
   final int pageSize = 10;
 
-  bool stopSecondFetch = false;
-
   void fetchRatings(int pageKey) {
-    DatabaseService.getSortedRatings(
-            pageKey * pageSize, (pageKey + 1) * pageSize)
-        .then((value) {
-      value.length < pageSize
-          ? pagingController.appendLastPage(value)
-          : pagingController.appendPage(value, pageKey + 1);
-    });
+    final List<Rating> ratings = DatabaseService.getSortedRatings(
+        pageKey * pageSize, (pageKey + 1) * pageSize);
+    ratings.length < pageSize
+        ? pagingController.appendLastPage(ratings)
+        : pagingController.appendPage(ratings, pageKey + 1);
   }
 
   void onTap(Rating rating) {

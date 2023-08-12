@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:mood_memo/controllers/list_controller.dart';
 import 'package:mood_memo/models/rating.dart';
-import 'package:mood_memo/widgets/list_item.dart';
+import 'package:mood_memo/widgets/list/list_item.dart';
 
 class RatingList extends StatefulWidget {
   final RatingListController controller;
@@ -13,7 +13,6 @@ class RatingList extends StatefulWidget {
 }
 
 class _RatingListState extends State<RatingList> {
-
   @override
   void initState() {
     super.initState();
@@ -28,10 +27,29 @@ class _RatingListState extends State<RatingList> {
       separatorBuilder: (context, index) => const Divider(),
       pagingController: widget.controller.pagingController,
       builderDelegate: PagedChildBuilderDelegate<Rating>(
-          itemBuilder: (context, item, index) => ListTile(
-                title: ListItem(rating: item, controller: widget.controller),
-                onTap: () => widget.controller.onTap(item),
+        // the builder for when the user has no ratings
+        noItemsFoundIndicatorBuilder: (context) => const Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "You don't have any ratings yet.",
+                style: TextStyle(fontSize: 20),
               ),
+              SizedBox(height: 10),
+              Text(
+                "Tap the new rating button to add one.",
+                style: TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
+        ),
+        // the standard builder for the ratings
+        itemBuilder: (context, item, index) => ListTile(
+          title: ListItem(rating: item, controller: widget.controller),
+          onTap: () => widget.controller.onTap(item),
+        ),
       ),
     );
   }

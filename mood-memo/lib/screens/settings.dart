@@ -19,6 +19,36 @@ class _SettingsState extends State<Settings> {
         ),
       body: ListView(
         children: [
+          // notification settings
+          ExpansionTile(
+            title: const Text('Reminder'),
+            subtitle: Text(SettingsController.reminderEnabled == true ? SettingsController.formatTime(context) : 'Off'),
+            children: [
+              // enable reminder switch
+              ListTile(
+                title: const Text('Enable Reminder'),
+                trailing: Switch(
+                  value: SettingsController.reminderEnabled,
+                  onChanged: (value) {
+                    setState(() {
+                      SettingsController.setReminderEnabled(value);
+                    });
+                  },
+                ),
+              ),
+              // reminder time selection
+              ListTile(
+                title: const Text('Reminder Time'),
+                trailing: Text(SettingsController.formatTime(context)),
+                enabled: SettingsController.reminderEnabled,
+                onTap: () {
+                  setState(() {
+                    SettingsController.selectReminderTime(context, setState);
+                  });
+                },
+              ),
+            ],
+          ),
           // theme selection
           ExpansionTile(
             title: const Text('Theme'),
@@ -56,6 +86,7 @@ class _SettingsState extends State<Settings> {
               ),
             ],
           ),
+          const SizedBox(height: 25),
           // send feedback button -> opens email app
           ListTile(
             title: const Text('Send Feedback'),

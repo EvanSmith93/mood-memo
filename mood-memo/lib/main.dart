@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mood_memo/screens/home.dart';
+import 'package:mood_memo/services/db.dart';
 //import 'package:mood_memo/screens/splash.dart';;
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
+  await initHive();
   runApp(const MyApp());
 }
 
@@ -49,8 +49,8 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               textTheme: Theme.of(context).textTheme.apply(
-                fontFamily: "Poppins",
-              ),
+                    fontFamily: "Poppins",
+                  ),
             ),
             darkTheme: ThemeData.dark().copyWith(
               colorScheme: const ColorScheme.dark(
@@ -69,11 +69,10 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               textTheme: Theme.of(context).textTheme.apply(
-                fontFamily: "Poppins",
-                bodyColor: Colors.white,
-              ),
+                    fontFamily: "Poppins",
+                    bodyColor: Colors.white,
+                  ),
             ),
-
             home: const Home(),
           );
         });

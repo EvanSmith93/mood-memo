@@ -11,13 +11,39 @@ import 'package:launch_review/launch_review.dart';
 class SettingsController extends ChangeNotifier {
   DatabaseService db = DatabaseService();
 
-  static ThemeMode theme = ThemeMode.system;
+  static bool reminderEnabled = false;
+  static TimeOfDay reminderTime = const TimeOfDay(hour: 19, minute: 0);
 
-  static Future<void> initializeTheme() async {
-    theme = await DatabaseService.getThemeMode();
-    await setTheme(theme);
+  static ThemeMode theme = DatabaseService.getThemeMode();
+
+  /// Returns whether the reminder is enabled.
+  static void setReminderEnabled(bool value) {
+    reminderEnabled = value;
+    //await DatabaseService.setReminderEnabled(value);
   }
 
+  /// Returns the formatted time of the reminder.
+  static String formatTime(BuildContext context) {
+    return reminderTime.format(context);
+  }
+
+  /// Lets the user select a time for the reminder and returns the selected time.
+  static Future<TimeOfDay> selectReminderTime(
+      BuildContext context, Function refresher) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: reminderTime,
+    );
+
+    if (picked != null && picked != reminderTime) {
+      reminderTime = picked;
+      refresher(() {});
+    }
+
+    return reminderTime;
+  }
+
+  /// Returns the name of the current theme.
   String get themeName {
     switch (theme) {
       case ThemeMode.system:
@@ -31,12 +57,14 @@ class SettingsController extends ChangeNotifier {
     }
   }
 
-  static Future<void> setTheme(ThemeMode mode) async {
+  /// Sets the theme of the app.
+  static void setTheme(ThemeMode mode) {
     MyApp.themeMode.value = mode;
     theme = mode;
-    await DatabaseService.setThemeMode(mode);
+    DatabaseService.setThemeMode(mode);
   }
 
+  /// Opens the email app with a pre-filled email to send feedback.
   void sendFeedback() async {
     String? encodeQueryParameters(Map<String, String> params) {
       return params.entries
@@ -59,6 +87,22 @@ class SettingsController extends ChangeNotifier {
       await launchUrl(emailUri);
     } else {
       throw 'Could not launch email app.';
+    }
+  }
+
+  /// Opens the app store page for the app.
+  void rateApp() async {
+    LaunchReview.launch();
+  }
+
+  /// Opens the privacy policy page in the browser.
+  void privacyPolicy() async {
+    final uri =
+        Uri.parse('https://evansmith93.github.io/mood-memo-site/#/privacy');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch url.';
     }
   }
 
@@ -96,18 +140,5 @@ class SettingsController extends ChangeNotifier {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String appVersion = packageInfo.version;
     return appVersion;
-  }
-
-  void rateApp() async {
-    LaunchReview.launch();
-  }
-
-  void privacyPolicy() async {
-    final uri = Uri.parse('https://evansmith93.github.io/mood-memo-site/#/privacy');
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      throw 'Could not launch url.';
-    }
   }
 }
