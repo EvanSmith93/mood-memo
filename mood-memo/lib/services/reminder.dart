@@ -31,13 +31,13 @@ class ReminderService {
   }
 
   /// Displays a notification when run (currently unused)
-  Future showNotification(
+  static Future showNotification(
       {int id = 1, required String title, required String body}) {
     return notificationsPlugin.show(id, title, body, _notificationDetails());
   }
 
   /// Scheudles a daily notification at the specified time.
-  Future<void> scheduleDailyNotification(
+  static Future<void> scheduleDailyNotification(
       {int id = 0,
       required String title,
       required String body,
@@ -58,12 +58,12 @@ class ReminderService {
   }
 
   /// Cancels the scheduled daily notification with the specified ID.
-  Future<void> cancelNotification({int id = 0}) async {
+  static Future<void> cancelNotification({int id = 0}) async {
     await notificationsPlugin.cancel(id);
   }
 
   /// Returns the notification details for ios and android
-  NotificationDetails _notificationDetails() {
+  static NotificationDetails _notificationDetails() {
     return const NotificationDetails(
         android: AndroidNotificationDetails(
           'daily_notification',
@@ -74,7 +74,7 @@ class ReminderService {
   }
 
   /// Calculates the initial time for the first occurrence of the notification based on the time zone of the device.
-  Future<TZDateTime> _initialScheduledDate(TimeOfDay notificationTime) async {
+  static Future<TZDateTime> _initialScheduledDate(TimeOfDay notificationTime) async {
     final locationName = await FlutterNativeTimezone.getLocalTimezone();
     final location = getLocation(locationName);
     final now = TZDateTime.from(DateTime.now(), location);

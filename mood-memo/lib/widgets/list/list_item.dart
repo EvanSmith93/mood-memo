@@ -39,6 +39,8 @@ class _ListItemState extends State<ListItem> {
                     ? Text(
                         widget.rating.note,
                         style: const TextStyle(fontSize: 22),
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
                       )
                     : Text(
                         "No note",

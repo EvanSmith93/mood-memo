@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/controllers/settings_controller.dart';
-import 'package:mood_memo/services/db.dart';
+import 'package:mood_memo/services/settings.dart';
 
 class Settings extends StatefulWidget {
   Settings({super.key});
@@ -14,8 +14,8 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    bool reminderEnabled = DatabaseService.getReminderEnabled();
-    ThemeMode theme = DatabaseService.getThemeMode();
+    bool reminderEnabled = SettingsService.getReminderEnabled();
+    ThemeMode theme = SettingsService.getThemeMode();
 
     return Scaffold(
       appBar: AppBar(

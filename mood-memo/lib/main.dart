@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/screens/home.dart';
-import 'package:mood_memo/services/db.dart';
 import 'package:mood_memo/services/reminder.dart';
+import 'package:mood_memo/services/settings.dart';
+import 'package:mood_memo/services/setup_hive.dart';
 //import 'package:mood_memo/screens/splash.dart';;
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initHive();
+  
+  await setupHive();
   ReminderService.initialize();
 
   runApp(const MyApp());
@@ -21,7 +23,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 
   static final ValueNotifier<ThemeMode> themeMode =
-      ValueNotifier(DatabaseService.getThemeMode());
+      ValueNotifier(SettingsService.getThemeMode());
 }
 
 class _MyAppState extends State<MyApp> {

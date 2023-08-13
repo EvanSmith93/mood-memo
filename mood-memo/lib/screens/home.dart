@@ -4,7 +4,7 @@ import 'package:mood_memo/controllers/list_controller.dart';
 import 'package:mood_memo/models/rating.dart';
 import 'package:mood_memo/screens/settings.dart';
 import 'package:mood_memo/widgets/calendar/calendar.dart';
-import 'package:mood_memo/screens/list.dart';
+import 'package:mood_memo/widgets/list/list.dart';
 import 'package:mood_memo/screens/edit.dart';
 
 class Home extends StatefulWidget {
