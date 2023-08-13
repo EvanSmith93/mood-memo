@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/controllers/settings_controller.dart';
+import 'package:mood_memo/services/db.dart';
 
 class Settings extends StatefulWidget {
   Settings({super.key});
@@ -13,22 +14,27 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
+    bool reminderEnabled = DatabaseService.getReminderEnabled();
+    ThemeMode theme = DatabaseService.getThemeMode();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
-        ),
+      ),
       body: ListView(
         children: [
           // notification settings
           ExpansionTile(
             title: const Text('Reminder'),
-            subtitle: Text(SettingsController.reminderEnabled == true ? SettingsController.formatTime(context) : 'Off'),
+            subtitle: Text(reminderEnabled == true
+                ? SettingsController.formatTime(context)
+                : 'Off'),
             children: [
               // enable reminder switch
               ListTile(
                 title: const Text('Enable Reminder'),
                 trailing: Switch(
-                  value: SettingsController.reminderEnabled,
+                  value: reminderEnabled,
                   onChanged: (value) {
                     setState(() {
                       SettingsController.setReminderEnabled(value);
@@ -40,7 +46,7 @@ class _SettingsState extends State<Settings> {
               ListTile(
                 title: const Text('Reminder Time'),
                 trailing: Text(SettingsController.formatTime(context)),
-                enabled: SettingsController.reminderEnabled,
+                enabled: reminderEnabled,
                 onTap: () {
                   setState(() {
                     SettingsController.selectReminderTime(context, setState);
@@ -57,7 +63,7 @@ class _SettingsState extends State<Settings> {
               RadioListTile(
                 title: const Text('System Default'),
                 value: ThemeMode.system,
-                groupValue: SettingsController.theme,
+                groupValue: theme,
                 onChanged: (value) {
                   setState(() {
                     SettingsController.setTheme(value!);
@@ -67,7 +73,7 @@ class _SettingsState extends State<Settings> {
               RadioListTile(
                 title: const Text('Light'),
                 value: ThemeMode.light,
-                groupValue: SettingsController.theme,
+                groupValue: theme,
                 onChanged: (value) {
                   setState(() {
                     SettingsController.setTheme(value!);
@@ -77,7 +83,7 @@ class _SettingsState extends State<Settings> {
               RadioListTile(
                 title: const Text('Dark'),
                 value: ThemeMode.dark,
-                groupValue: SettingsController.theme,
+                groupValue: theme,
                 onChanged: (value) {
                   setState(() {
                     SettingsController.setTheme(value!);

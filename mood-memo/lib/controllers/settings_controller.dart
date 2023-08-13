@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:mood_memo/main.dart';
 import 'package:mood_memo/services/db.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:mood_memo/services/reminder.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:launch_review/launch_review.dart';
@@ -11,37 +12,48 @@ import 'package:launch_review/launch_review.dart';
 class SettingsController extends ChangeNotifier {
   DatabaseService db = DatabaseService();
 
-  static bool reminderEnabled = false;
-  static TimeOfDay reminderTime = const TimeOfDay(hour: 19, minute: 0);
+  static String notificationTitle = "Daily Reminder";
+  static String notificationBody = "It's time to record your mood for today.";
 
   /// Returns whether the reminder is enabled.
   static void setReminderEnabled(bool value) {
-    reminderEnabled = value;
-    //await DatabaseService.setReminderEnabled(value);
+    DatabaseService.setReminderEnabled(value);
+
+    if (value == false) {
+      ReminderService().cancelNotification();
+    } else {
+      ReminderService().scheduleDailyNotification(
+          title: notificationTitle,
+          body: notificationBody,
+          time: DatabaseService.getReminderTime());
+    }
   }
 
   /// Returns the formatted time of the reminder.
   static String formatTime(BuildContext context) {
-    return reminderTime.format(context);
+    return DatabaseService.getReminderTime().format(context);
   }
 
-  /// Lets the user select a time for the reminder and returns the selected time.
-  static Future<TimeOfDay> selectReminderTime(
+  /// Lets the user select a time for the reminder.
+  static Future<void> selectReminderTime(
       BuildContext context, Function refresher) async {
+    TimeOfDay initialTime = DatabaseService.getReminderTime();
+
     final TimeOfDay? picked = await showTimePicker(
       context: context,
-      initialTime: reminderTime,
+      initialTime: initialTime,
     );
 
-    if (picked != null && picked != reminderTime) {
-      reminderTime = picked;
+    if (picked != null && picked != initialTime) {
+      DatabaseService.setReminderTime(picked);
       refresher(() {});
+
+      ReminderService().scheduleDailyNotification(
+          title: notificationTitle,
+          body: notificationBody,
+          time: picked);
     }
-
-    return reminderTime;
   }
-
-  static ThemeMode get theme => DatabaseService.getThemeMode();
 
   /// Returns the name of the current theme.
   String get themeName {

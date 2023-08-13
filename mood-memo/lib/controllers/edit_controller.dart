@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mood_memo/main.dart';
 import 'package:mood_memo/models/rating.dart';
+import 'package:mood_memo/models/rating_value.dart';
 import 'package:mood_memo/services/db.dart';
 import 'package:mood_memo/screens/edit.dart';
 

@@ -3,6 +3,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:mood_memo/controllers/edit_controller.dart';
 import 'package:mood_memo/main.dart';
 import 'package:mood_memo/models/rating.dart';
+import 'package:mood_memo/models/rating_value.dart';
 import 'package:mood_memo/widgets/edit/edit_rating.dart';
 
 void showEditPopup(

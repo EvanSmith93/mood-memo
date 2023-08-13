@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/controllers/edit_controller.dart';
 import 'package:mood_memo/widgets/edit/color_box.dart';
-import 'package:mood_memo/models/rating.dart';
+import 'package:mood_memo/models/rating_value.dart';
 
 class EditRating extends StatefulWidget {
   final NewRatingController controller;

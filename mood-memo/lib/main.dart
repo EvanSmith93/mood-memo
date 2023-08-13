@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/screens/home.dart';
 import 'package:mood_memo/services/db.dart';
+import 'package:mood_memo/services/reminder.dart';
 //import 'package:mood_memo/screens/splash.dart';;
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -8,6 +9,8 @@ final navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initHive();
+  ReminderService.initialize();
+
   runApp(const MyApp());
 }
 

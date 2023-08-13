@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/controllers/edit_controller.dart';
-import 'package:mood_memo/models/rating.dart';
+import 'package:mood_memo/models/rating_value.dart';
 
 class ColorBox extends StatefulWidget {
   final RatingValue value;
