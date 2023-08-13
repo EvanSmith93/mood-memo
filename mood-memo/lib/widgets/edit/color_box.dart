@@ -22,14 +22,14 @@ class _ColorBoxState extends State<ColorBox> {
       height: width / 6.5,
       decoration: BoxDecoration(
         color: widget.value.color
-            .withOpacity(widget.controller.isSelected(widget.value) ? 1 : 0.8),
+            .withOpacity(widget.controller.isSelected(widget.value) ? 1 : 0.75),
       ),
       child: Center(
         child: Icon(
           widget.value.icon,
           size: widget.controller.isSelected(widget.value)
               ? width / 7
-              : width / 9.5,
+              : width / 10.5,
         ),
       ),
     );
