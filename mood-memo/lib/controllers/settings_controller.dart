@@ -88,7 +88,7 @@ class SettingsController extends ChangeNotifier {
       query: encodeQueryParameters(<String, String>{
         'subject': 'Mood Memo Feedback',
         'body':
-            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\nDevice: ${await _getDeviceModel()}\nOS: ${await _getSystemVersion()}\nApp Version: ${await _getAppVersion()}\n',
+            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\nDevice: ${await _getDeviceModel()}\nOS: ${await _getSystemVersion()}\nApp Version: ${await getAppVersion()}\n',
       }),
     );
 
@@ -145,7 +145,7 @@ class SettingsController extends ChangeNotifier {
     return 'error getting system version';
   }
 
-  Future<String> _getAppVersion() async {
+  Future<String> getAppVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String appVersion = packageInfo.version;
     return appVersion;

@@ -92,6 +92,7 @@ class _SettingsState extends State<Settings> {
               ),
             ],
           ),
+          const SizedBox(height: 20),
           // send feedback button -> opens email app
           ListTile(
             title: const Text('Send Feedback'),
@@ -115,6 +116,20 @@ class _SettingsState extends State<Settings> {
             onTap: () {
               widget.controller.privacyPolicy();
             },
+          ),
+          // app version number
+          ListTile(
+            title: const Text('App Version'),
+            trailing: FutureBuilder(
+              future: widget.controller.getAppVersion(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(snapshot.data.toString());
+                } else {
+                  return const Text('Loading...');
+                }
+              },
+            ),
           ),
         ],
       ),
