@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 
+// TODO: Have this class extend the DateTime class
 class DateService {
   /// Formats a date into a string, e.g. "2021-03-15"
   static String formatDate(DateTime date) {

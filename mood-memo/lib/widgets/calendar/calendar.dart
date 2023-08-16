@@ -22,8 +22,7 @@ class _CalendarState extends State<Calendar> {
         height: MediaQuery.of(context).size.width,
         child: SfCalendarTheme(
           data: SfCalendarThemeData(
-            headerTextStyle: Theme.of(context).textTheme.titleLarge,
-            activeDatesTextStyle: Theme.of(context).textTheme.bodyMedium,
+            headerTextStyle: Theme.of(context).textTheme.titleMedium,
             viewHeaderDayTextStyle: Theme.of(context).textTheme.bodyMedium,
           ),
           child: SfCalendar(

@@ -27,26 +27,27 @@ class _EditRatingState extends State<EditRating> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10),
       child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 12),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
               child: Text(
                 'Rate your day',
-                style: TextStyle(fontSize: 30),
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(10),
               child: ToggleButtons(
                 isSelected: widget.controller.selected,
                 color: Colors.white,
                 selectedColor: Colors.white,
-                //selectedColor: Theme.of(context).textTheme.bodyMedium?.color,
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 children: [
                   ColorBox(
@@ -68,7 +69,7 @@ class _EditRatingState extends State<EditRating> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(10),
               child: TextField(
                 maxLines: 5,
                 controller: widget.controller.noteController,
@@ -80,14 +81,14 @@ class _EditRatingState extends State<EditRating> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(10),
               child: SizedBox(
                 height: 130,
                 child: CupertinoTheme(
                   data: CupertinoThemeData(
                     textTheme: CupertinoTextThemeData(
                       dateTimePickerTextStyle:
-                          Theme.of(context).textTheme.titleLarge,
+                          Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
                   child: CupertinoDatePicker(
@@ -102,7 +103,7 @@ class _EditRatingState extends State<EditRating> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(10),
               child: ElevatedButton(
                 onPressed: widget.controller.getValue() == 0
                     ? null
@@ -110,8 +111,11 @@ class _EditRatingState extends State<EditRating> {
                         widget.controller
                             .saveRating(widget.date, widget.refresher);
                       },
-                child: const Text('Save',
-                    style: TextStyle(fontSize: 28, color: Colors.white)),
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    textStyle: Theme.of(context).textTheme.titleLarge,
+                    ),
+                child: const Text('Save'),
               ),
             ),
             const SizedBox(height: 10),

@@ -28,19 +28,21 @@ class _RatingListState extends State<RatingList> {
       pagingController: widget.controller.pagingController,
       builderDelegate: PagedChildBuilderDelegate<Rating>(
         // the builder for when the user has no ratings
-        noItemsFoundIndicatorBuilder: (context) => const Padding(
-          padding: EdgeInsets.all(20),
+        noItemsFoundIndicatorBuilder: (context) => Padding(
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "You don't have any ratings yet.",
-                style: TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 "Tap the new rating button to add one.",
-                style: TextStyle(fontSize: 14),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ],
           ),

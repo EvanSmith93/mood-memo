@@ -58,7 +58,7 @@ class _DetailState extends State<Detail> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(widget.rating.value.word,
-                              style: const TextStyle(fontSize: 20)),
+                              style: Theme.of(context).textTheme.titleLarge),
                         ],
                       ),
                       const SizedBox(height: 5),
@@ -72,7 +72,6 @@ class _DetailState extends State<Detail> {
                                   ? Colors.grey[400]
                                   : Colors.grey[600],
                           color: widget.rating.value.color,
-                          
                         ),
                       ),
                     ],
@@ -89,10 +88,9 @@ class _DetailState extends State<Detail> {
                   children: [
                     Text(
                       'Note',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Theme.of(context).hintColor,
-                      ),
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: Theme.of(context).hintColor,
+                          ),
                     ),
                     const SizedBox(height: 10),
                     Expanded(
@@ -101,7 +99,7 @@ class _DetailState extends State<Detail> {
                         child: SingleChildScrollView(
                           child: Text(
                             widget.rating.note,
-                            style: const TextStyle(fontSize: 24),
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ),
                       ),
@@ -110,15 +108,14 @@ class _DetailState extends State<Detail> {
                 ),
               ),
             ),
-           Visibility(
+            Visibility(
               visible: widget.rating.note.isEmpty,
               child: Expanded(
                 child: Align(
                   alignment: Alignment.topCenter,
                   child: Text(
                     'No note',
-                    style: TextStyle(
-                      fontSize: 18,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
                       color: Theme.of(context).hintColor,
                     ),
                   ),
@@ -137,6 +134,7 @@ class _DetailState extends State<Detail> {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     foregroundColor: Colors.white,
+                    textStyle: Theme.of(context).textTheme.titleSmall,
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)))),
               ),

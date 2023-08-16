@@ -46,9 +46,8 @@ class _MyAppState extends State<MyApp> {
                 backgroundColor: ThemeData.light().scaffoldBackgroundColor,
                 elevation: 0,
                 iconTheme: const IconThemeData(color: Colors.black),
-                titleTextStyle: const TextStyle(
+                titleTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: Colors.black,
-                  fontSize: 20,
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                 ),
@@ -66,9 +65,8 @@ class _MyAppState extends State<MyApp> {
                 backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
                 elevation: 0,
                 iconTheme: const IconThemeData(color: Colors.white),
-                titleTextStyle: const TextStyle(
+                titleTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: Colors.white,
-                  fontSize: 20,
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                 ),
