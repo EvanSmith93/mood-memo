@@ -57,15 +57,15 @@ enum RatingValue {
       case none:
         return 'None';
       case one:
-        return 'Bad';
+        return 'Very Unpleasant';
       case two:
-        return 'Not Good';
+        return 'Unpleasant';
       case three:
-        return 'Okay';
+        return 'Neutral';
       case four:
-        return 'Good';
+        return 'Pleasant';
       case five:
-        return 'Great';
+        return 'Very Pleasant';
     }
   }
 
