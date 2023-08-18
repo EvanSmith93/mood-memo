@@ -48,7 +48,9 @@ class _EditRatingState extends State<EditRating> {
                 isSelected: widget.controller.selected,
                 color: Colors.white,
                 selectedColor: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                fillColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                renderBorder: false,
                 children: [
                   ColorBox(
                       value: RatingValue.one, controller: widget.controller),

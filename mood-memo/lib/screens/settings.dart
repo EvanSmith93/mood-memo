@@ -23,9 +23,9 @@ class _SettingsState extends State<Settings> {
       ),
       body: ListView(
         children: [
-          // notification settings
+          // daily reminder settings
           ExpansionTile(
-            title: const Text('Reminder'),
+            title: const Text('Daily Reminder'),
             subtitle: Text(reminderEnabled == true
                 ? SettingsController.formatTime(context)
                 : 'Off'),
