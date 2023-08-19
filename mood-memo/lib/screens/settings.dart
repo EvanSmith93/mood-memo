@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/controllers/settings_controller.dart';
-import 'package:mood_memo/services/backup.dart';
 import 'package:mood_memo/services/settings.dart';
 import 'package:external_path/external_path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -140,36 +139,7 @@ class _SettingsState extends State<Settings> {
           ),
           ElevatedButton(
             onPressed: () async {
-              Map<Permission, PermissionStatus> statuses = await [
-                Permission.storage,
-              ].request();
-
-              String csv = const ListToCsvConverter().convert([
-                ['Date', 'Rating', 'Note'],
-                ['2021-10-10', '5', 'This is a note'],
-                ['2021-10-11', '4', 'This is another note'],
-              ]);
-
-              //String dir = await ExternalPath.getExternalStoragePublicDirectory(
-              //    ExternalPath.DIRECTORY_DOWNLOADS);
-              // I think this might work, I need to test it on a real device
-              String dir;
-              if (Platform.isAndroid) {
-                dir = await ExternalPath.getExternalStoragePublicDirectory(
-                    ExternalPath.DIRECTORY_DOWNLOADS);
-              } else if (Platform.isIOS) {
-                Directory documents = await getApplicationDocumentsDirectory();
-                dir = documents.path;
-              } else {
-                print('Unsupported platform');
-                return;
-              }
-
-              print('dir $dir');
-
-              await Directory(dir).create(recursive: true);
-              File f = File('$dir/exported_ratings.csv');
-              f.writeAsString(csv);
+              SettingsController.exportData();
             },
             child: const Text('Export Data'),
           ),

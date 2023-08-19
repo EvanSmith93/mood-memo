@@ -1,11 +1,16 @@
 import 'dart:io';
+import 'package:csv/csv.dart';
+import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mood_memo/main.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:mood_memo/services/db.dart';
 import 'package:mood_memo/services/reminder.dart';
 import 'package:mood_memo/services/settings.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:launch_review/launch_review.dart';
 
@@ -47,9 +52,7 @@ class SettingsController extends ChangeNotifier {
       refresher(() {});
 
       ReminderService.scheduleDailyNotification(
-          title: notificationTitle,
-          body: notificationBody,
-          time: picked);
+          title: notificationTitle, body: notificationBody, time: picked);
     }
   }
 
@@ -113,6 +116,32 @@ class SettingsController extends ChangeNotifier {
     } else {
       throw 'Could not launch url.';
     }
+  }
+
+  /// Exports the data to a csv file and saves it to the device files.
+  static void exportData() async {
+    Map<Permission, PermissionStatus> _ = await [
+      Permission.storage,
+    ].request();
+
+    final table = DatabaseService.getRatingTable();
+    String csv = const ListToCsvConverter().convert(table);
+
+    String dir;
+    if (Platform.isAndroid) {
+      dir = await ExternalPath.getExternalStoragePublicDirectory(
+          ExternalPath.DIRECTORY_DOWNLOADS);
+    } else if (Platform.isIOS) {
+      Directory documents = await getApplicationDocumentsDirectory();
+      dir = documents.path;
+    } else {
+      print('Unsupported platform');
+      return;
+    }
+
+    await Directory(dir).create(recursive: true);
+    File f = File('$dir/exported_ratings.csv');
+    f.writeAsString(csv);
   }
 
   Future<String> _getDeviceModel() async {

@@ -9,14 +9,13 @@ import 'package:mood_memo/models/time_of_day.g.dart';
 import 'package:mood_memo/services/date.dart';
 import 'package:path_provider/path_provider.dart';
 
+/// A service function that moves the old Hive boxes to the new Hive directory. This function is only used once.
 Future<void> moveHiveBoxes(String newPath) async {
   bool needToMove = await Hive.boxExists('ratings');
   if (needToMove) {
-    print('moving hive boxes');
-
     Box ratings = await Hive.openBox('ratings');
     Box notes = await Hive.openBox('notes');
-    Box newRatings = await Hive.openBox<Rating>('ratings', path: newPath);
+    Box newRatings = await Hive.openBox<Rating>('userRatings', path: newPath);
 
     for (String date in ratings.keys) {
       int? value = ratings.get(date);
@@ -38,8 +37,8 @@ Future<void> moveHiveBoxes(String newPath) async {
 
     Box settings = await Hive.openBox<SettingsModel>('settings');
     Box newSettings =
-        await Hive.openBox<SettingsModel>('settings', path: newPath);
-    newSettings.put('settings', settings.get('settings'));
+        await Hive.openBox<SettingsModel>('userSettings', path: newPath);
+    newSettings.put('userSettings', settings.get('settings'));
     Hive.deleteBoxFromDisk('settings');
 
     await Hive.close();
@@ -57,29 +56,20 @@ Future<void> setupHive() async {
   Hive.registerAdapter(RatingValueAdapter());
   Hive.registerAdapter(RatingAdapter());
 
-  // opens the boxes
+  // gets the path to the Hive directory
   Directory dir = await getApplicationDocumentsDirectory();
-  print('dir ${dir.path}');
   String path = '${dir.path}/Hive';
   await Directory(path).create(recursive: true);
-  
-  moveHiveBoxes(path);
 
-  Box ratings = await Hive.openBox<Rating>('ratings', path: path);
-  Box settings = await Hive.openBox<SettingsModel>('settings', path: path);
+  // moves the old Hive boxes to the new Hive directory
+  await moveHiveBoxes(path);
+
+  // opens the Hive boxes
+  await Hive.openBox<Rating>('userRatings', path: path);
+  Box settings = await Hive.openBox<SettingsModel>('userSettings', path: path);
 
   // adds default settings if they don't exist
-  if (!settings.containsKey('settings')) {
-    settings.put('settings', SettingsModel());
+  if (!settings.containsKey('userSettings')) {
+    settings.put('userSettings', SettingsModel());
   }
-
-  // try to restore the backup if the ratings and notes are empty
-  /*if (ratings.isEmpty && notes.isEmpty) {
-    try {
-      await restoreHiveBox('ratings');
-      await restoreHiveBox('notes');
-    } catch (e) {
-      print(e);
-    }
-  }*/
 }
