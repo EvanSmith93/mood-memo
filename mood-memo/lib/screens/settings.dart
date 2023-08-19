@@ -1,6 +1,12 @@
+import 'dart:io';
+
+import 'package:csv/csv.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/controllers/settings_controller.dart';
+import 'package:mood_memo/services/backup.dart';
 import 'package:mood_memo/services/settings.dart';
+import 'package:external_path/external_path.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Settings extends StatefulWidget {
   Settings({super.key});
@@ -130,6 +136,28 @@ class _SettingsState extends State<Settings> {
                 }
               },
             ),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              Map<Permission, PermissionStatus> statuses = await [
+                Permission.storage,
+              ].request();
+
+              String csv = const ListToCsvConverter().convert([
+                ['Date', 'Rating', 'Note'],
+                ['2021-10-10', '5', 'This is a note'],
+                ['2021-10-11', '4', 'This is another note'],
+              ]);
+
+              String dir = await ExternalPath.getExternalStoragePublicDirectory(
+                  ExternalPath.DIRECTORY_DOWNLOADS);
+              print('dir $dir');
+
+              File f = File('$dir/filename.csv');
+
+              f.writeAsString(csv);
+            },
+            child: const Text('Export Data'),
           ),
         ],
       ),

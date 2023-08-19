@@ -4,8 +4,8 @@ import 'package:mood_memo/models/rating_value.dart';
 import 'package:mood_memo/services/date.dart';
 
 class DatabaseService {
-  static final Box _ratingsBox = Hive.box('ratings');
-  static final Box _notesBox = Hive.box('notes');
+  static Box get _ratingsBox => Hive.box('ratings');
+  static Box get _notesBox => Hive.box('notes');
   static List<dynamic> sortedKeys = [];
 
   static void setRating(Rating rating) {
