@@ -57,7 +57,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Returns the name of the current theme.
-  String get themeName {
+  static String get themeName {
     switch (SettingsService.getThemeMode()) {
       case ThemeMode.system:
         return 'System Default';
@@ -77,7 +77,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Opens the email app with a pre-filled email to send feedback.
-  void sendFeedback() async {
+  static void sendFeedback() async {
     String? encodeQueryParameters(Map<String, String> params) {
       return params.entries
           .map((MapEntry<String, String> e) =>
@@ -103,12 +103,12 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Opens the app store page for the app.
-  void rateApp() async {
+  static void rateApp() async {
     LaunchReview.launch();
   }
 
   /// Opens the privacy policy page in the browser.
-  void privacyPolicy() async {
+  static void privacyPolicy() async {
     final uri =
         Uri.parse('https://evansmith93.github.io/mood-memo-site/#/privacy');
     if (await canLaunchUrl(uri)) {
@@ -119,32 +119,84 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Exports the data to a csv file and saves it to the device files.
-  static void exportData() async {
-    Map<Permission, PermissionStatus> _ = await [
-      Permission.storage,
-    ].request();
+  static Future<void> exportRatings() async {
+    try {
+      Map<Permission, PermissionStatus> _ = await [
+        Permission.storage,
+      ].request();
 
-    final table = DatabaseService.getRatingTable();
-    String csv = const ListToCsvConverter().convert(table);
+      final table = DatabaseService.getRatingTable();
+      String csv = const ListToCsvConverter().convert(table);
 
-    String dir;
-    if (Platform.isAndroid) {
-      dir = await ExternalPath.getExternalStoragePublicDirectory(
-          ExternalPath.DIRECTORY_DOWNLOADS);
-    } else if (Platform.isIOS) {
-      Directory documents = await getApplicationDocumentsDirectory();
-      dir = documents.path;
-    } else {
-      print('Unsupported platform');
-      return;
+      String dir;
+      if (Platform.isAndroid) {
+        dir = await ExternalPath.getExternalStoragePublicDirectory(
+            ExternalPath.DIRECTORY_DOWNLOADS);
+      } else if (Platform.isIOS) {
+        Directory documents = await getApplicationDocumentsDirectory();
+        dir = documents.path;
+      } else {
+        throw 'Platform not supported.';
+      }
+
+      await Directory(dir).create(recursive: true);
+      File f = File('$dir/exported_ratings.csv');
+      f.writeAsString(csv);
+
+      showExportAlert(true);
+    } catch (e) {
+      showExportAlert(false, e.toString());
     }
-
-    await Directory(dir).create(recursive: true);
-    File f = File('$dir/exported_ratings.csv');
-    f.writeAsString(csv);
   }
 
-  Future<String> _getDeviceModel() async {
+  /// Shows an alert dialog to the user with the result of the export.
+  static void showExportAlert(bool success, [String? error]) {
+    if (success) {
+      final String message;
+      if (Platform.isAndroid) {
+        message =
+            "The ratings have been exported to the downloads folder in your device's files.";
+      } else {
+        message = "The ratings have been exported to the Files app.";
+      }
+      showDialog(
+        context: navigatorKey.currentContext!,
+        builder: (context) => AlertDialog(
+          title: const Text('Export Successful'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Okay'),
+            ),
+          ],
+        ),
+      );
+    } else {
+      final message =
+          'An error occurred while exporting the ratings.${error != null ? '\nError: $error' : ''}';
+      showDialog(
+        context: navigatorKey.currentContext!,
+        builder: (context) => AlertDialog(
+          title: const Text('Export Failed'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Okay'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  /// Returns the device model.
+  static Future<String> _getDeviceModel() async {
     try {
       if (Platform.isIOS) {
         final deviceInfo = await DeviceInfoPlugin().iosInfo;
@@ -159,7 +211,8 @@ class SettingsController extends ChangeNotifier {
     return 'error getting device model';
   }
 
-  Future<String> _getSystemVersion() async {
+  /// Returns the system's version.
+  static Future<String> _getSystemVersion() async {
     try {
       if (Platform.isIOS) {
         final deviceInfo = await DeviceInfoPlugin().iosInfo;
@@ -174,7 +227,8 @@ class SettingsController extends ChangeNotifier {
     return 'error getting system version';
   }
 
-  Future<String> getAppVersion() async {
+  /// Returns the app's version.
+  static Future<String> getAppVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String appVersion = packageInfo.version;
     return appVersion;

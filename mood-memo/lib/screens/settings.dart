@@ -1,20 +1,13 @@
-import 'dart:io';
-
-import 'package:csv/csv.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:mood_memo/controllers/settings_controller.dart';
+import 'package:mood_memo/screens/advanced_settings.dart';
 import 'package:mood_memo/services/settings.dart';
-import 'package:external_path/external_path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class Settings extends StatefulWidget {
-  Settings({super.key});
+  const Settings({super.key});
 
   @override
   State<Settings> createState() => _SettingsState();
-
-  final controller = SettingsController();
 }
 
 class _SettingsState extends State<Settings> {
@@ -64,8 +57,9 @@ class _SettingsState extends State<Settings> {
           // theme selection
           ExpansionTile(
             title: const Text('Theme'),
-            subtitle: Text(widget.controller.themeName),
+            subtitle: Text(SettingsController.themeName),
             children: [
+              // system default theme
               RadioListTile(
                 title: const Text('System Default'),
                 value: ThemeMode.system,
@@ -76,6 +70,7 @@ class _SettingsState extends State<Settings> {
                   });
                 },
               ),
+              // light theme
               RadioListTile(
                 title: const Text('Light'),
                 value: ThemeMode.light,
@@ -86,6 +81,7 @@ class _SettingsState extends State<Settings> {
                   });
                 },
               ),
+              // dark theme
               RadioListTile(
                 title: const Text('Dark'),
                 value: ThemeMode.dark,
@@ -104,7 +100,7 @@ class _SettingsState extends State<Settings> {
             title: const Text('Send Feedback'),
             trailing: const Icon(Icons.arrow_forward),
             onTap: () {
-              widget.controller.sendFeedback();
+              SettingsController.sendFeedback();
             },
           ),
           // rate app button -> opens app store
@@ -112,36 +108,21 @@ class _SettingsState extends State<Settings> {
             title: const Text('Rate App'),
             trailing: const Icon(Icons.arrow_forward),
             onTap: () {
-              widget.controller.rateApp();
+              SettingsController.rateApp();
             },
           ),
-          // privacy policy button -> opens browser
+          // advanced settings button -> opens advanced settings page
           ListTile(
-            title: const Text('Privacy Policy'),
+            title: const Text('Advanced Settings'),
             trailing: const Icon(Icons.arrow_forward),
             onTap: () {
-              widget.controller.privacyPolicy();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AdvancedSettings(),
+                ),
+              );
             },
-          ),
-          // app version number
-          ListTile(
-            title: const Text('App Version'),
-            trailing: FutureBuilder(
-              future: widget.controller.getAppVersion(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data.toString());
-                } else {
-                  return const Text('Loading...');
-                }
-              },
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              SettingsController.exportData();
-            },
-            child: const Text('Export Data'),
           ),
         ],
       ),
