@@ -11,7 +11,6 @@ class ListItem extends StatefulWidget {
   State<ListItem> createState() => _ListItemState();
 }
 
-// TODO: the text looks too big. Maybe make it the same size as standard system wide text.
 class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class _ListItemState extends State<ListItem> {
               children: [
                 Text(
                   widget.rating.getRelativeDate(),
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 const SizedBox(height: 10),
                 widget.rating.note != ""
