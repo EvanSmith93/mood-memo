@@ -88,7 +88,7 @@ class _DetailState extends State<Detail> {
                   children: [
                     Text(
                       'Note',
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: Theme.of(context).hintColor,
                           ),
                     ),
@@ -99,7 +99,7 @@ class _DetailState extends State<Detail> {
                         child: SingleChildScrollView(
                           child: Text(
                             widget.rating.note,
-                            style: Theme.of(context).textTheme.titleMedium,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
                       ),
@@ -115,7 +115,7 @@ class _DetailState extends State<Detail> {
                   alignment: Alignment.topCenter,
                   child: Text(
                     'No note',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).hintColor,
                     ),
                   ),

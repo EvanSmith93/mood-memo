@@ -32,19 +32,19 @@ class _ListItemState extends State<ListItem> {
               children: [
                 Text(
                   widget.rating.getRelativeDate(),
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 10),
                 widget.rating.note != ""
                     ? Text(
                         widget.rating.note,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleLarge,
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
                       )
                     : Text(
                         "No note",
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).hintColor,
                         ),
                       ),
