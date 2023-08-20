@@ -88,7 +88,7 @@ class _DetailState extends State<Detail> {
                   children: [
                     Text(
                       'Note',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).hintColor,
                           ),
                     ),
