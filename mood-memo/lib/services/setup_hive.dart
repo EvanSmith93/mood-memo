@@ -57,9 +57,8 @@ Future<void> setupHive() async {
   Hive.registerAdapter(RatingAdapter());
 
   // gets the path to the Hive directory
-  Directory dir = await getApplicationDocumentsDirectory();
-  String path = '${dir.path}/Hive';
-  await Directory(path).create(recursive: true);
+  Directory dir = await getApplicationSupportDirectory();
+  String path = dir.path;
 
   // moves the old Hive boxes to the new Hive directory
   await moveHiveBoxes(path);
