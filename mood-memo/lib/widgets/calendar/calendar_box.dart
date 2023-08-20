@@ -50,6 +50,7 @@ class _CalendarBoxState extends State<CalendarBox> {
               child: Center(
                 child: Text(
                   widget.details.date.day.toString(),
+                  style: Theme.of(context).textTheme.titleMedium
                 ),
               ),
             ),
