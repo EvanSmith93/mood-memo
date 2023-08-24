@@ -3,6 +3,7 @@ import 'package:csv/csv.dart';
 import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mood_memo/main.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:mood_memo/services/db.dart';
@@ -19,12 +20,28 @@ class SettingsController extends ChangeNotifier {
   static String notificationBody = "It's time to record your mood for today.";
 
   /// Returns whether the reminder is enabled.
-  static void setReminderEnabled(bool value) {
+  static Future<void> setReminderEnabled(bool value) async {
     SettingsService.setReminderEnabled(value);
-
     if (value == false) {
       ReminderService.cancelNotification();
     } else {
+      // TODO: if the notification permission isn't granted, tell the user to enable it. requestPermissions returns a bool that's true if the permission is granted.
+      if (Platform.isIOS) {
+        await FlutterLocalNotificationsPlugin()
+            .resolvePlatformSpecificImplementation<
+                IOSFlutterLocalNotificationsPlugin>()
+            ?.requestPermissions(
+              alert: true,
+              badge: true,
+              sound: true,
+            );
+      } else if (Platform.isAndroid) {
+        await FlutterLocalNotificationsPlugin()
+            .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin>()
+            ?.requestPermission();
+      }
+
       ReminderService.scheduleDailyNotification(
           title: notificationTitle,
           body: notificationBody,
@@ -78,25 +95,23 @@ class SettingsController extends ChangeNotifier {
 
   /// Opens the email app with a pre-filled email to send feedback.
   static void sendFeedback() async {
-    String? encodeQueryParameters(Map<String, String> params) {
-      return params.entries
-          .map((MapEntry<String, String> e) =>
-              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-          .join('&');
-    }
+    String email = Uri.encodeComponent("moodmemofeedback@gmail.com");
+    String subject = Uri.encodeComponent("Mood Memo Feedback");
+    String body = Uri.encodeComponent("""Device Info (do not delete):
+    Device: ${await _getDeviceModel()}
+    OS: ${await _getSystemVersion()}
+    App Version: ${await getAppVersion()}
+    
+    Share your feedback here:
+    
 
-    final Uri emailUri = Uri(
-      scheme: 'mailto',
-      path: 'moodmemofeedback@gmail.com',
-      query: encodeQueryParameters(<String, String>{
-        'subject': 'Mood Memo Feedback',
-        'body':
-            'Share your feedback here:\n\n\n\n------------------------\nDevice Info:\nDevice: ${await _getDeviceModel()}\nOS: ${await _getSystemVersion()}\nApp Version: ${await getAppVersion()}\n',
-      }),
-    );
 
-    if (await canLaunchUrl(emailUri)) {
-      await launchUrl(emailUri);
+    """);
+
+    Uri mail = Uri.parse("mailto:$email?subject=$subject&body=$body");
+
+    if (await canLaunchUrl(mail)) {
+      await launchUrl(mail);
     } else {
       throw 'Could not launch email app.';
     }
@@ -104,7 +119,9 @@ class SettingsController extends ChangeNotifier {
 
   /// Opens the app store page for the app.
   static void rateApp() async {
-    LaunchReview.launch();
+    LaunchReview.launch(
+        iOSAppId: '6451342285',
+        androidAppId: 'com.evansmith.mood_memo');
   }
 
   /// Opens the privacy policy page in the browser.

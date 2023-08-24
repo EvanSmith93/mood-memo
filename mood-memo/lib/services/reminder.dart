@@ -10,13 +10,13 @@ class ReminderService {
   /// Initializes the flutter local notifications
   static Future<void> initialize() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings("mood_memo_notification_icon");
+        AndroidInitializationSettings("ic_stat_android_app_icon");
 
     DarwinInitializationSettings initializationSettingsIOS =
         DarwinInitializationSettings(
-            requestSoundPermission: true,
-            requestBadgePermission: true,
-            requestAlertPermission: true,
+            requestSoundPermission: false,
+            requestBadgePermission: false,
+            requestAlertPermission: false,
             onDidReceiveLocalNotification: (int id, String? title, String? body,
                 String? payload) async {});
 
