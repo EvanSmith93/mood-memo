@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:mood_memo/services/settings.dart';
 
 part 'rating_value.g.dart';
 
@@ -36,19 +37,11 @@ enum RatingValue {
   }
 
   Color get color {
-    switch (this) {
-      case none:
-        return Colors.black;
-      case one:
-        return const Color.fromARGB(255, 225, 56, 56);
-      case two:
-        return const Color.fromARGB(255, 222, 108, 51);
-      case three:
-        return const Color.fromARGB(255, 72, 101, 220);
-      case four:
-        return const Color.fromARGB(255, 94, 202, 62);
-      case five:
-        return const Color.fromARGB(255, 226, 190, 47);
+    int index = number - 1;
+    if (index < 0) {
+      return Colors.black;
+    } else {
+      return SettingsService.getColorPalette().colors[index];
     }
   }
 

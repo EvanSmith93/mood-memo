@@ -20,19 +20,22 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
       reminderEnabled: fields[0] as bool,
       reminderTime: fields[1] as TimeOfDay,
       themeMode: fields[2] as ThemeMode,
+      colorPalette: fields[3] as ColorPalette,
     );
   }
 
   @override
   void write(BinaryWriter writer, SettingsModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.reminderEnabled)
       ..writeByte(1)
       ..write(obj.reminderTime)
       ..writeByte(2)
-      ..write(obj.themeMode);
+      ..write(obj.themeMode)
+      ..writeByte(3)
+      ..write(obj.colorPalette);
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:mood_memo/models/color_palette.dart';
 import 'package:mood_memo/models/settings.dart';
 
 class SettingsService {
@@ -36,6 +37,17 @@ class SettingsService {
   static void setThemeMode(ThemeMode mode) {
     SettingsModel settings = _settingsBox.get('userSettings')!;
     settings.themeMode = mode;
+    _settingsBox.put('userSettings', settings);
+  }
+
+  static ColorPalette getColorPalette() {
+    SettingsModel settings = _settingsBox.get('userSettings')!;
+    return settings.colorPalette;
+  }
+
+  static void setColorPalette(ColorPalette palette) {
+    SettingsModel settings = _settingsBox.get('userSettings')!;
+    settings.colorPalette = palette;
     _settingsBox.put('userSettings', settings);
   }
 }

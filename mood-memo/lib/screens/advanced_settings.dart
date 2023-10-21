@@ -9,6 +9,8 @@ class AdvancedSettings extends StatefulWidget {
 }
 
 class _AdvancedSettingsState extends State<AdvancedSettings> {
+  SettingsController settingsController = SettingsController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class _AdvancedSettingsState extends State<AdvancedSettings> {
             title: const Text('Export Ratings'),
             trailing: const Icon(Icons.arrow_forward),
             onTap: () async {
-              await SettingsController.exportRatings();
+              await settingsController.exportRatings();
             },
           ),
           // privacy policy button -> opens browser
@@ -30,14 +32,14 @@ class _AdvancedSettingsState extends State<AdvancedSettings> {
             title: const Text('Privacy Policy'),
             trailing: const Icon(Icons.arrow_forward),
             onTap: () {
-              SettingsController.privacyPolicy();
+              settingsController.privacyPolicy();
             },
           ),
           // app version number
           ListTile(
             title: const Text('App Version'),
             trailing: FutureBuilder(
-              future: SettingsController.getAppVersion(),
+              future: settingsController.getAppVersion(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Text(snapshot.data.toString());

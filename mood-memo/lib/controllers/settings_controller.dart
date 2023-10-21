@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:mood_memo/main.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:mood_memo/models/color_palette.dart';
 import 'package:mood_memo/services/db.dart';
 import 'package:mood_memo/services/reminder.dart';
 import 'package:mood_memo/services/settings.dart';
@@ -16,11 +17,13 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:launch_review/launch_review.dart';
 
 class SettingsController extends ChangeNotifier {
-  static String notificationTitle = "Daily Reminder";
-  static String notificationBody = "It's time to record your mood for today.";
+  static const String notificationTitle = "Daily Reminder";
+  static const String notificationBody = "It's time to record your mood for today.";
+
+  bool didChangePalette = false;
 
   /// Returns whether the reminder is enabled.
-  static Future<void> setReminderEnabled(bool value) async {
+  Future<void> setReminderEnabled(bool value) async {
     SettingsService.setReminderEnabled(value);
     if (value == false) {
       ReminderService.cancelNotification();
@@ -50,12 +53,13 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Returns the formatted time of the reminder.
-  static String formatTime(BuildContext context) {
+  /// TODO: refactor this to use the TimeOfDay extension
+  String formatTime(BuildContext context) {
     return SettingsService.getReminderTime().format(context);
   }
 
   /// Lets the user select a time for the reminder.
-  static Future<void> selectReminderTime(
+  Future<void> selectReminderTime(
       BuildContext context, Function refresher) async {
     TimeOfDay initialTime = SettingsService.getReminderTime();
 
@@ -73,28 +77,20 @@ class SettingsController extends ChangeNotifier {
     }
   }
 
-  /// Returns the name of the current theme.
-  static String get themeName {
-    switch (SettingsService.getThemeMode()) {
-      case ThemeMode.system:
-        return 'System Default';
-      case ThemeMode.light:
-        return 'Light';
-      case ThemeMode.dark:
-        return 'Dark';
-      default:
-        return 'System Default';
-    }
-  }
-
   /// Sets the theme of the app.
-  static void setTheme(ThemeMode mode) {
+  void setTheme(ThemeMode mode) {
     MyApp.themeMode.value = mode;
     SettingsService.setThemeMode(mode);
   }
 
+  /// Sets the color palette of the app.
+  void setPalette(ColorPalette color) {
+    didChangePalette = true;
+    SettingsService.setColorPalette(color);
+  }
+
   /// Opens the email app with a pre-filled email to send feedback.
-  static void sendFeedback() async {
+  void sendFeedback() async {
     String email = Uri.encodeComponent("moodmemofeedback@gmail.com");
     String subject = Uri.encodeComponent("Mood Memo Feedback");
     String body = Uri.encodeComponent("""Device Info (do not delete):
@@ -118,14 +114,14 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Opens the app store page for the app.
-  static void rateApp() async {
+  void rateApp() async {
     LaunchReview.launch(
         iOSAppId: '6451342285',
         androidAppId: 'com.evansmith.mood_memo');
   }
 
   /// Opens the privacy policy page in the browser.
-  static void privacyPolicy() async {
+  void privacyPolicy() async {
     final uri =
         Uri.parse('https://evansmith93.github.io/mood-memo-site/#/privacy');
     if (await canLaunchUrl(uri)) {
@@ -136,7 +132,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Exports the data to a csv file and saves it to the device files.
-  static Future<void> exportRatings() async {
+  Future<void> exportRatings() async {
     try {
       Map<Permission, PermissionStatus> _ = await [
         Permission.storage,
@@ -167,7 +163,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Shows an alert dialog to the user with the result of the export.
-  static void showExportAlert(bool success, [String? error]) {
+  void showExportAlert(bool success, [String? error]) {
     if (success) {
       final String message;
       if (Platform.isAndroid) {
@@ -213,7 +209,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Returns the device model.
-  static Future<String> _getDeviceModel() async {
+  Future<String> _getDeviceModel() async {
     try {
       if (Platform.isIOS) {
         final deviceInfo = await DeviceInfoPlugin().iosInfo;
@@ -229,7 +225,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Returns the system's version.
-  static Future<String> _getSystemVersion() async {
+  Future<String> _getSystemVersion() async {
     try {
       if (Platform.isIOS) {
         final deviceInfo = await DeviceInfoPlugin().iosInfo;
@@ -245,7 +241,7 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Returns the app's version.
-  static Future<String> getAppVersion() async {
+  Future<String> getAppVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String appVersion = packageInfo.version;
     return appVersion;

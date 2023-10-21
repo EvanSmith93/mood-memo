@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+import 'color_palette.dart';
+
 part 'settings.g.dart';
 
 @HiveType(typeId: 2)
@@ -9,6 +11,7 @@ class SettingsModel {
     this.reminderEnabled = false,
     this.reminderTime = const TimeOfDay(hour: 19, minute: 0),
     this.themeMode = ThemeMode.system,
+    this.colorPalette = ColorPalette.classic,
   });
 
   @HiveField(0)
@@ -19,4 +22,7 @@ class SettingsModel {
 
   @HiveField(2)
   ThemeMode themeMode;
+
+  @HiveField(3)
+  ColorPalette colorPalette;
 }

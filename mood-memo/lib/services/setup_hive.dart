@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mood_memo/models/color_palette.dart';
 import 'package:mood_memo/models/rating.dart';
 import 'package:mood_memo/models/rating_value.dart';
 import 'package:mood_memo/models/settings.dart';
@@ -50,6 +51,7 @@ Future<void> setupHive() async {
   await Hive.initFlutter();
 
   // registers the type adapters
+  Hive.registerAdapter(ColorPaletteAdapter());
   Hive.registerAdapter(SettingsModelAdapter());
   Hive.registerAdapter(TimeOfDayAdapter());
   Hive.registerAdapter(ThemeModeAdapter());

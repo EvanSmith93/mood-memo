@@ -35,13 +35,17 @@ class _HomeState extends State<Home> {
               Icons.settings,
               color: Theme.of(context).unselectedWidgetColor,
             ),
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              bool refresh = await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => Settings(),
                 ),
               );
+
+              if (refresh == true) {
+                setState(() {});
+              }
             },
           ),
         ],
