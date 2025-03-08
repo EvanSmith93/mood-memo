@@ -1,20 +1,32 @@
-buildscript {
-    ext.kotlin_version = '1.6.10'
-    repositories {
-        google()
-        mavenCentral()
-    }
+// buildscript {
+//     ext.kotlin_version = '1.8'
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
+//     dependencies {
+//         classpath 'com.android.tools.build:gradle:8.10.1'
+//         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//     }
+// }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace project.group
+                    }
+                }
+            }
+        }
     }
 }
 

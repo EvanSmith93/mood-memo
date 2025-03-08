@@ -14,11 +14,12 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:launch_review/launch_review.dart';
+// import 'package:launch_review/launch_review.dart';
 
 class SettingsController extends ChangeNotifier {
   static const String notificationTitle = "Daily Reminder";
-  static const String notificationBody = "It's time to record your mood for today.";
+  static const String notificationBody =
+      "It's time to record your mood for today.";
 
   bool didChangePalette = false;
 
@@ -42,7 +43,7 @@ class SettingsController extends ChangeNotifier {
         await FlutterLocalNotificationsPlugin()
             .resolvePlatformSpecificImplementation<
                 AndroidFlutterLocalNotificationsPlugin>()
-            ?.requestPermission();
+            ?.requestNotificationsPermission();
       }
 
       ReminderService.scheduleDailyNotification(
@@ -115,9 +116,8 @@ class SettingsController extends ChangeNotifier {
 
   /// Opens the app store page for the app.
   void rateApp() async {
-    LaunchReview.launch(
-        iOSAppId: '6451342285',
-        androidAppId: 'com.evansmith.mood_memo');
+    // LaunchReview.launch(
+    //     iOSAppId: '6451342285', androidAppId: 'com.evansmith.mood_memo');
   }
 
   /// Opens the privacy policy page in the browser.
@@ -144,7 +144,7 @@ class SettingsController extends ChangeNotifier {
       String dir;
       if (Platform.isAndroid) {
         dir = await ExternalPath.getExternalStoragePublicDirectory(
-            ExternalPath.DIRECTORY_DOWNLOADS);
+            ExternalPath.DIRECTORY_DOWNLOAD);
       } else if (Platform.isIOS) {
         Directory documents = await getApplicationDocumentsDirectory();
         dir = documents.path;

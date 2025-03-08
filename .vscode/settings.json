@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/Users/evansmith/Desktop/mood memo/mood-memo/linux"
+  "cmake.sourceDirectory": "/Users/evansmith/Desktop/mood memo/mood-memo/linux",
+  "java.configuration.updateBuildConfiguration": "automatic"
 }

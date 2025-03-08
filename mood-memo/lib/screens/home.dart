@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  // move this to a seperate file
+  // move this to a separate file
   RatingListController controller = RatingListController();
 
   @override
@@ -67,9 +67,11 @@ class _HomeState extends State<Home> {
         currentIndex: _currentIndex,
         onTap: (int index) {
           if (index == 1) {
-            controller.pagingController = PagingController<int, Rating>(
-              firstPageKey: 0,
-            );
+            // controller.pagingController = PagingController<int, Rating>(
+            //   firstPageKey: 0,
+            //   // getNextPageKey: (state) => (state.keys?.last ?? 0) + 1,
+            // );
+            controller.pagingController.refresh();
           }
           setState(() {
             _currentIndex = index;

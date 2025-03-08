@@ -6,16 +6,23 @@ import 'package:mood_memo/screens/detail.dart';
 import 'package:mood_memo/services/db.dart';
 
 class RatingListController {
-  PagingController<int, Rating> pagingController =
-      PagingController(firstPageKey: 0);
-  final int pageSize = 10;
+  static int pageSize = 10;
 
-  void fetchRatings(int pageKey) {
+  PagingController<int, Rating> pagingController = PagingController(
+    getNextPageKey: (state) => (state.keys?.last ?? 0) + 1,
+    fetchPage: (pageKey) {
+      return DatabaseService.getSortedRatings(
+          pageKey * pageSize, (pageKey + 1) * pageSize);
+    },
+  );
+
+  List<Rating> fetchRatings(int pageKey) {
     final List<Rating> ratings = DatabaseService.getSortedRatings(
         pageKey * pageSize, (pageKey + 1) * pageSize);
-    ratings.length < pageSize
-        ? pagingController.appendLastPage(ratings)
-        : pagingController.appendPage(ratings, pageKey + 1);
+    return ratings;
+    // ratings.length < pageSize
+    //     ? pagingController.appendLastPage(ratings)
+    //     : pagingController.appendPage(ratings, pageKey + 1);
   }
 
   void onTap(Rating rating) {

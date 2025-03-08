@@ -1,7 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart';
-import 'package:flutter_native_timezone_updated_gradle/flutter_native_timezone.dart';
 
 class ReminderService {
   static final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -14,11 +14,11 @@ class ReminderService {
 
     DarwinInitializationSettings initializationSettingsIOS =
         DarwinInitializationSettings(
-            requestSoundPermission: false,
-            requestBadgePermission: false,
-            requestAlertPermission: false,
-            onDidReceiveLocalNotification: (int id, String? title, String? body,
-                String? payload) async {});
+      requestSoundPermission: false,
+      requestBadgePermission: false,
+      requestAlertPermission: false,
+    );
+    // TODO: I might need to fix notificationsPlugin.initialize
 
     var initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
@@ -74,8 +74,9 @@ class ReminderService {
   }
 
   /// Calculates the initial time for the first occurrence of the notification based on the time zone of the device.
-  static Future<TZDateTime> _initialScheduledDate(TimeOfDay notificationTime) async {
-    final locationName = await FlutterNativeTimezone.getLocalTimezone();
+  static Future<TZDateTime> _initialScheduledDate(
+      TimeOfDay notificationTime) async {
+    final locationName = DateTime.now().timeZoneName;
     final location = getLocation(locationName);
     final now = TZDateTime.from(DateTime.now(), location);
 
