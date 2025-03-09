@@ -5,6 +5,20 @@ import 'package:hive/hive.dart';
 
 part 'color_palette.g.dart';
 
+List<Color> generateColorShades({
+  double hue = 140,
+  double saturation = 1,
+  List<double> lightnessValues = const [0.18, 0.3, 0.5, 0.7, 0.82],
+}) {
+  List<Color> colors = [];
+
+  for (double lightness in lightnessValues) {
+    colors.add(HSLColor.fromAHSL(1, hue, saturation, lightness).toColor());
+  }
+
+  return colors;
+}
+
 @HiveType(typeId: 5)
 enum ColorPalette {
   @HiveField(0)
@@ -18,12 +32,10 @@ enum ColorPalette {
   @HiveField(4)
   orange,
   @HiveField(5)
-  yellow,
-  @HiveField(6)
   green,
-  @HiveField(7)
+  @HiveField(6)
   blue,
-  @HiveField(8)
+  @HiveField(7)
   purple;
 
   // reutrn a list of colors based on the color palette
@@ -54,53 +66,15 @@ enum ColorPalette {
           const Color(0xffc7b91e),
         ];
       case red:
-        return [
-          const Color(0xff651E1E), // not verified
-          const Color(0xff8F1E1E),
-          const Color(0xffB81E1E),
-          const Color(0xffE11E1E),
-          const Color(0xffE86464),
-        ];
+        return generateColorShades(hue: 350, saturation: 0.9);
       case orange:
-        return [
-          const Color(0xff65321E), // not verified
-          const Color(0xff8F4E1E),
-          const Color(0xffB86B1E),
-          const Color(0xffE1871E),
-          const Color(0xffE8A364),
-        ];
-      case yellow:
-        return [
-          const Color(0xff65651E), // not verified (also maybe not a good color)
-          const Color(0xff8F8F1E),
-          const Color(0xffB8B81E),
-          const Color(0xffE1E11E),
-          const Color(0xffE8E864),
-        ];
+        return generateColorShades(hue: 25, saturation: 0.9);
       case green:
-        return [
-          const Color(0xff326521),
-          const Color(0xff4E883F),
-          const Color(0xff6BAB5D),
-          const Color(0xff87CD7B),
-          const Color(0xffA3F099),
-        ];
+        return generateColorShades(hue: 140, saturation: 0.9);
       case blue:
-        return [
-          const Color(0xff214B65),
-          const Color(0xff3F6988),
-          const Color(0xff5D87AB),
-          const Color(0xff7BA5CD),
-          const Color(0xff99C3F0),
-        ];
+        return generateColorShades(hue: 205, saturation: 0.9);
       case purple:
-        return [
-          const Color(0xff4D2B83),
-          const Color(0xff6B479E),
-          const Color(0xff8A62BA),
-          const Color(0xffA87ED5),
-          const Color(0xffC699F0),
-        ];
+        return generateColorShades(hue: 270, saturation: 0.9);
     }
   }
 
@@ -116,8 +90,6 @@ enum ColorPalette {
         return 'Red';
       case orange:
         return 'Orange';
-      case yellow:
-        return 'Yellow';
       case green:
         return 'Green';
       case blue:

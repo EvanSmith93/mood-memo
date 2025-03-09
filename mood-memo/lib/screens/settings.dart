@@ -69,74 +69,18 @@ class _SettingsState extends State<Settings> {
           ExpansionTile(
             title: const Text('Color Palette'),
             subtitle: Text(palette.name),
-            children: [
-              // classic palette
-              RadioListTile(
-                title: const Text('Classic'),
-                value: ColorPalette.classic,
+            children: ColorPalette.values.map((ColorPalette value) {
+              return RadioListTile(
+                title: Text(value.name),
+                value: value,
                 groupValue: palette,
                 onChanged: (value) {
                   setState(() {
                     settingsController.setPalette(value!);
                   });
                 },
-              ),
-              // light palette
-              RadioListTile(
-                title: const Text('Light'),
-                value: ColorPalette.light,
-                groupValue: palette,
-                onChanged: (value) {
-                  setState(() {
-                    settingsController.setPalette(value!);
-                  });
-                },
-              ),
-              // dark palette
-              RadioListTile(
-                title: const Text('Dark'),
-                value: ColorPalette.dark,
-                groupValue: palette,
-                onChanged: (value) {
-                  setState(() {
-                    settingsController.setPalette(value!);
-                  });
-                },
-              ),
-              // green palette
-              RadioListTile(
-                title: const Text('Green'),
-                value: ColorPalette.green,
-                groupValue: palette,
-                onChanged: (value) {
-                  setState(() {
-                    settingsController.setPalette(value!);
-                  });
-                },
-              ),
-              // blue palette
-              RadioListTile(
-                title: const Text('Blue'),
-                value: ColorPalette.blue,
-                groupValue: palette,
-                onChanged: (value) {
-                  setState(() {
-                    settingsController.setPalette(value!);
-                  });
-                },
-              ),
-              // purple palette
-              RadioListTile(
-                title: const Text('Purple'),
-                value: ColorPalette.purple,
-                groupValue: palette,
-                onChanged: (value) {
-                  setState(() {
-                    settingsController.setPalette(value!);
-                  });
-                },
-              ),
-            ],
+              );
+            }).toList(),
           ),
           // theme selection
           ExpansionTile(

@@ -24,12 +24,10 @@ class ColorPaletteAdapter extends TypeAdapter<ColorPalette> {
       case 4:
         return ColorPalette.orange;
       case 5:
-        return ColorPalette.yellow;
-      case 6:
         return ColorPalette.green;
-      case 7:
+      case 6:
         return ColorPalette.blue;
-      case 8:
+      case 7:
         return ColorPalette.purple;
       default:
         return ColorPalette.classic;
@@ -54,17 +52,14 @@ class ColorPaletteAdapter extends TypeAdapter<ColorPalette> {
       case ColorPalette.orange:
         writer.writeByte(4);
         break;
-      case ColorPalette.yellow:
+      case ColorPalette.green:
         writer.writeByte(5);
         break;
-      case ColorPalette.green:
+      case ColorPalette.blue:
         writer.writeByte(6);
         break;
-      case ColorPalette.blue:
-        writer.writeByte(7);
-        break;
       case ColorPalette.purple:
-        writer.writeByte(8);
+        writer.writeByte(7);
         break;
     }
   }
