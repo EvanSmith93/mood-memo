@@ -39,10 +39,11 @@ class SettingsController extends ChangeNotifier {
               sound: true,
             );
       } else if (Platform.isAndroid) {
-        await FlutterLocalNotificationsPlugin()
+        final notificationPlugin = FlutterLocalNotificationsPlugin()
             .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>()
-            ?.requestNotificationsPermission();
+                AndroidFlutterLocalNotificationsPlugin>();
+        await notificationPlugin?.requestNotificationsPermission();
+        await notificationPlugin?.requestExactAlarmsPermission();
       }
 
       ReminderService.scheduleDailyNotification(
