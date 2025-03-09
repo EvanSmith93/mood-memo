@@ -14,7 +14,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:launch_review/launch_review.dart';
 
 class SettingsController extends ChangeNotifier {
   static const String notificationTitle = "Daily Reminder";
@@ -116,8 +115,28 @@ class SettingsController extends ChangeNotifier {
 
   /// Opens the app store page for the app.
   void rateApp() async {
-    // LaunchReview.launch(
-    //     iOSAppId: '6451342285', androidAppId: 'com.evansmith.mood_memo');
+    final appId = Platform.isIOS ? '' : 'com.evansmith.mood_memo';
+
+    try {
+      if (Platform.isIOS) {
+        final url = Uri.parse(
+            'https://apps.apple.com/app/id$appId?action=write-review');
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        }
+      } else if (Platform.isAndroid) {
+        final url = Uri.parse('market://details?id=$appId');
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        } else {
+          final webUrl =
+              Uri.parse('https://play.google.com/store/apps/details?id=$appId');
+          await launchUrl(webUrl, mode: LaunchMode.externalApplication);
+        }
+      }
+    } catch (e) {
+      throw 'Could not launch url.';
+    }
   }
 
   /// Opens the privacy policy page in the browser.
