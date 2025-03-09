@@ -67,10 +67,9 @@ class _HomeState extends State<Home> {
         currentIndex: _currentIndex,
         onTap: (int index) {
           if (index == 1) {
-            // controller.pagingController = PagingController<int, Rating>(
-            //   firstPageKey: 0,
-            //   // getNextPageKey: (state) => (state.keys?.last ?? 0) + 1,
-            // );
+            controller.pagingController = PagingController<int, Rating>(
+              firstPageKey: 0,
+            );
             controller.pagingController.refresh();
           }
           setState(() {

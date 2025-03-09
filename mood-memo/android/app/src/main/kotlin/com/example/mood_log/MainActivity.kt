@@ -1,4 +1,4 @@
-package com.example.mood_memo
+package com.evansmith.mood_memo
 
 import io.flutter.embedding.android.FlutterActivity
 
