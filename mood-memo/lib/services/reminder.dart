@@ -75,11 +75,8 @@ class ReminderService {
   /// Calculates the initial time for the first occurrence of the notification based on the time zone of the device.
   static Future<TZDateTime> _initialScheduledDate(
       TimeOfDay notificationTime) async {
-    final location = tz.local;
-    final now = tz.TZDateTime.now(location);
-
-    final scheduledDate = TZDateTime(
-      location,
+    final now = DateTime.now();
+    final scheduledDate = DateTime(
       now.year,
       now.month,
       now.day,
@@ -87,8 +84,10 @@ class ReminderService {
       notificationTime.minute,
     );
 
-    return scheduledDate.isBefore(now)
+    final date = scheduledDate.isBefore(now)
         ? scheduledDate.add(const Duration(days: 1))
         : scheduledDate;
+
+    return tz.TZDateTime.from(date, tz.local);
   }
 }
