@@ -9,7 +9,7 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   await setupHive();
   ReminderService.initialize();
 
@@ -42,15 +42,22 @@ class _MyAppState extends State<MyApp> {
                 primary: Colors.blue,
                 secondary: Colors.blue,
               ),
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey[300],
+                  foregroundColor: Colors.black,
+                ),
+              ),
               appBarTheme: AppBarTheme(
                 backgroundColor: ThemeData.light().scaffoldBackgroundColor,
                 elevation: 0,
                 iconTheme: const IconThemeData(color: Colors.black),
-                titleTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Colors.black,
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle:
+                    Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Colors.black,
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w600,
+                        ),
               ),
               textTheme: Theme.of(context).textTheme.apply(
                     fontFamily: "Poppins",
@@ -61,15 +68,22 @@ class _MyAppState extends State<MyApp> {
                 primary: Colors.blue,
                 secondary: Colors.blue,
               ),
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey[850],
+                  foregroundColor: Colors.white,
+                ),
+              ),
               appBarTheme: AppBarTheme(
                 backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
                 elevation: 0,
                 iconTheme: const IconThemeData(color: Colors.white),
-                titleTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Colors.white,
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle:
+                    Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Colors.white,
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w600,
+                        ),
               ),
               textTheme: Theme.of(context).textTheme.apply(
                     fontFamily: "Poppins",

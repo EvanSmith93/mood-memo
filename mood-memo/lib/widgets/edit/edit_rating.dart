@@ -114,9 +114,8 @@ class _EditRatingState extends State<EditRating> {
                             .saveRating(widget.date, widget.refresher);
                       },
                 style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    textStyle: Theme.of(context).textTheme.titleLarge,
-                    ),
+                  textStyle: Theme.of(context).textTheme.titleLarge,
+                ),
                 child: const Text('Save'),
               ),
             ),
