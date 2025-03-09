@@ -10,7 +10,7 @@ class ReminderService {
 
   /// Initializes the flutter local notifications
   static Future<void> initialize() async {
-    final AndroidInitializationSettings initializationSettingsAndroid =
+    final initializationSettingsAndroid =
         AndroidInitializationSettings("ic_stat_android_app_icon");
 
     final initializationSettingsIOS = DarwinInitializationSettings(
@@ -84,10 +84,10 @@ class ReminderService {
       notificationTime.minute,
     );
 
-    final date = scheduledDate.isBefore(now)
+    final nextDate = scheduledDate.isBefore(now)
         ? scheduledDate.add(const Duration(days: 1))
         : scheduledDate;
 
-    return tz.TZDateTime.from(date, tz.local);
+    return tz.TZDateTime.from(nextDate, tz.local);
   }
 }
