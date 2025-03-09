@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 class ReminderService {
   static final FlutterLocalNotificationsPlugin notificationsPlugin =
@@ -9,18 +10,16 @@ class ReminderService {
 
   /// Initializes the flutter local notifications
   static Future<void> initialize() async {
-    const AndroidInitializationSettings initializationSettingsAndroid =
+    final AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings("ic_stat_android_app_icon");
 
-    DarwinInitializationSettings initializationSettingsIOS =
-        DarwinInitializationSettings(
+    final initializationSettingsIOS = DarwinInitializationSettings(
       requestSoundPermission: false,
       requestBadgePermission: false,
       requestAlertPermission: false,
     );
-    // TODO: I might need to fix notificationsPlugin.initialize
 
-    var initializationSettings = InitializationSettings(
+    final initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsIOS,
     );
@@ -36,7 +35,7 @@ class ReminderService {
     return notificationsPlugin.show(id, title, body, _notificationDetails());
   }
 
-  /// Scheudles a daily notification at the specified time.
+  /// Schedules a daily notification at the specified time.
   static Future<void> scheduleDailyNotification(
       {int id = 0,
       required String title,
@@ -76,9 +75,8 @@ class ReminderService {
   /// Calculates the initial time for the first occurrence of the notification based on the time zone of the device.
   static Future<TZDateTime> _initialScheduledDate(
       TimeOfDay notificationTime) async {
-    final locationName = DateTime.now().timeZoneName;
-    final location = getLocation(locationName);
-    final now = TZDateTime.from(DateTime.now(), location);
+    final location = tz.local;
+    final now = tz.TZDateTime.now(location);
 
     final scheduledDate = TZDateTime(
       location,
